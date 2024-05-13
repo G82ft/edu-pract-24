@@ -75,4 +75,6 @@
 
 ## ER диаграмма
 
-![ER Diagram](attachments/er-diagram.png)
+![ER Diagram](attachments/er-diagram.png "DrawIO concept")
+
+![SSMS Diagram](attachments/ssms-diagram.png "Microsoft SSMS diagram")
