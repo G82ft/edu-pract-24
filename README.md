@@ -75,4 +75,4 @@
 
 ## ER диаграмма
 
-![ER Diagram](attachments/img.png)
+![ER Diagram](attachments/er-diagram.png)
