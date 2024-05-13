@@ -25,25 +25,25 @@
 |----------|:----------------:|:-----------:|
 | ID       |      `int`       |   Primary   |
 | Model    |      `int`       |   Foreign   |
-| Number   |    `char(8)`     |   Unique    |
+| Number   |    `nchar(8)`    |   Unique    |
 | Mileage  |      `int`       |      -      |
 | Cost     | `decimal(12, 2)` |      -      |
 
 
 ### Models
 
-| Имя поля     |  Тип данных   | Ограничение |
-|--------------|:-------------:|:-----------:|
-| ID           |     `int`     |   Primary   |
-| Manufacturer |     `int`     |   Foreign   |
-| Name         | `varchar(32)` |   Unique    |
+| Имя поля     |   Тип данных   | Ограничение |
+|--------------|:--------------:|:-----------:|
+| ID           |     `int`      |   Primary   |
+| Manufacturer |     `int`      |   Foreign   |
+| Name         | `nvarchar(32)` |   Unique    |
 
 ### Manufacturers
 
-| Имя поля |  Тип данных   | Ограничение |
-|----------|:-------------:|:-----------:|
-| ID       |     `int`     |   Primary   |
-| Name     | `varchar(32)` |   Unique    |
+| Имя поля |   Тип данных   | Ограничение |
+|----------|:--------------:|:-----------:|
+| ID       |     `int`      |   Primary   |
+| Name     | `nvarchar(32)` |   Unique    |
 
 ### Users
 
