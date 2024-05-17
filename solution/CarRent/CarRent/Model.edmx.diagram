@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="82277fdbfd9641a69558a63626aeda40" Name="Diagram1">
-        <EntityTypeShape EntityType="CarRentModel.Cars" Width="1.5" PointX="3" PointY="5" />
-        <EntityTypeShape EntityType="CarRentModel.Manufacturers" Width="1.5" PointX="1.5" PointY="8.375" />
-        <EntityTypeShape EntityType="CarRentModel.Models" Width="1.5" PointX="0.75" PointY="5.25" />
-        <EntityTypeShape EntityType="CarRentModel.Orders" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="CarRentModel.Roles" Width="1.5" PointX="0.75" PointY="1.375" />
-        <EntityTypeShape EntityType="CarRentModel.Users" Width="1.5" PointX="3" PointY="1.125" />
-        <AssociationConnector Association="CarRentModel.FK_Cars_Models" />
-        <AssociationConnector Association="CarRentModel.FK_Orders_Cars" />
-        <AssociationConnector Association="CarRentModel.FK_Models_Manufacturers" />
-        <AssociationConnector Association="CarRentModel.FK_Orders_Users" />
-        <AssociationConnector Association="CarRentModel.FK_Users_Roles" />
+      <Diagram DiagramId="01598150633745138da1baf3a177f17f" Name="Diagram1">
+        <EntityTypeShape EntityType="CarRentModel.Cars" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentModel.Manufacturers" Width="1.5" PointX="1.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentModel.Models" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentModel.Orders" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentModel.Roles" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentModel.Users" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="CarRentModel.FK_Cars_Models" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentModel.FK_Orders_Cars" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentModel.FK_Models_Manufacturers" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentModel.FK_Orders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentModel.FK_Users_Roles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -22,3 +22,5 @@ C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\CarRent.
 C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\CarRent.pdb
 C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\Auth.g.cs
 C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\Auth.baml
+C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\View.g.cs
+C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\View.baml

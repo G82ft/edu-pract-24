@@ -27,10 +27,18 @@ namespace CarRent.Pages
 
         private void SignIn(object sender, RoutedEventArgs e)
         {
-            if(AppData.Model.Users.Where(x => x.Login == login.Text && x.Password == pwd.Password).Any())
+            if (login.Text == "" && pwd.Password == "")
             {
-                MessageBox.Show($"Добро пожаловать, {login.Text}!");
+                AppData.MainFrame.Navigate(new View()); // for testing purposes
             }
+            if(!AppData.Model.Users.Where(x => x.Login == login.Text && x.Password == pwd.Password).Any())
+            {
+                MessageBox.Show("Неверные кредиты!");
+                return;
+            }
+
+            MessageBox.Show($"Добро пожаловать, {login.Text}!");
+            AppData.MainFrame.Navigate(new View());
         }
 
         private void SignUp(object sender, RoutedEventArgs e)
@@ -54,6 +62,7 @@ namespace CarRent.Pages
             );
             AppData.Model.SaveChanges();
             MessageBox.Show("Регистрация прошла успешно!");
+            AppData.MainFrame.Navigate(new View());
         }
     }
 }
