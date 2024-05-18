@@ -66,5 +66,12 @@ namespace CarRent.Pages
 
             listView.ItemsSource = AppData.Model.Cars.Where(x => (x.Models.Manufacturers.Name + x.Models.Name).Contains(search.Text)).ToList();
         }
+
+        private void Edit(object sender, MouseButtonEventArgs e)
+        {
+            StackPanel sp = sender as StackPanel;
+            int ID = int.Parse((sp.Children[0] as TextBlock).Text);
+            AppData.MainFrame.Navigate(new AddEdit(AppData.Model.Cars.Where(x => x.ID == ID).First()));
+        }
     }
 }

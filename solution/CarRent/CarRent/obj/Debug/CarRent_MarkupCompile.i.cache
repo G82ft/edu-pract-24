@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\App.xaml
-3892922700
+41811257115
 22035508349
-18-1842981585
+19-272640492
 18-1186145089
-MainWindow.xaml;Pages\Auth.xaml;Pages\View.xaml;
+MainWindow.xaml;Pages\AddEdit.xaml;Pages\Auth.xaml;Pages\View.xaml;
 
-False
+True
 
