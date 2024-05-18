@@ -19,6 +19,14 @@
                 <ComboBox x:Name="filter" ToolTip="Фильтрация по производителю" SelectionChanged="filter_SelectionChanged"/>
             </StackPanel>
             <StackPanel>
+                <Label Content="Сортировка"/>
+                <ComboBox x:Name="sort" ToolTip="Сортировка" SelectionChanged="filter_SelectionChanged">
+                    <ComboBoxItem Content="Без сортировки"/>
+                    <ComboBoxItem Content="По цене"/>
+                    <ComboBoxItem Content="По пробегу"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel>
                 <Label Content="Поиск"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="search" Width="100"/>

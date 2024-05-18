@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,9 +24,13 @@ namespace CarRent.Pages
         public View()
         {
             InitializeComponent();
+            
+            List<string> mfs = AppData.Model.Manufacturers.Select(x => x.Name).ToList();
+            mfs.Insert(0, "*");
 
-            filter.ItemsSource = AppData.Model.Manufacturers.Select(x => x.Name).ToList();
+            filter.ItemsSource = mfs;
             filter.SelectedIndex = 0;
+            sort.SelectedIndex = 0;
 
             Update();
         }
@@ -36,7 +41,19 @@ namespace CarRent.Pages
             {
                 return;
             }
-            listView.ItemsSource = AppData.Model.Cars.Where(x => x.Models.Manufacturers.Name == filter.SelectedItem.ToString()).ToList();
+            string mf = filter.SelectedItem.ToString();
+
+            IQueryable<Cars> cars = AppData.Model.Cars.Where(x => mf == "*" || mf == x.Models.Manufacturers.Name);
+
+            switch (sort.SelectedIndex)
+            {
+                case 1:
+                    cars = cars.OrderBy(x => x.Cost); break;
+                case 2:
+                    cars = cars.OrderBy(x => x.Mileage); break;
+            }
+
+            listView.ItemsSource = cars.ToList();
         }
 
         private void filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
