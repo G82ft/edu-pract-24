@@ -16,11 +16,11 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <StackPanel>
                 <Label Content="Производитель"/>
-                <ComboBox x:Name="filter" ToolTip="Фильтрация по производителю" SelectionChanged="filter_SelectionChanged"/>
+                <ComboBox x:Name="filter" ToolTip="Фильтрация по производителю" SelectionChanged="Filter"/>
             </StackPanel>
             <StackPanel>
                 <Label Content="Сортировка"/>
-                <ComboBox x:Name="sort" ToolTip="Сортировка" SelectionChanged="filter_SelectionChanged">
+                <ComboBox x:Name="sort" ToolTip="Сортировка" SelectionChanged="Filter">
                     <ComboBoxItem Content="Без сортировки"/>
                     <ComboBoxItem Content="По цене"/>
                     <ComboBoxItem Content="По пробегу"/>
@@ -33,13 +33,16 @@
                     <Button Content="🔍" Click="Search"/>
                 </StackPanel>
             </StackPanel>
+            <StackPanel>
+                <Button Content="EDIT" Click="ToEdit"/>
+            </StackPanel>
         </StackPanel>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <ListView x:Name="listView" HorizontalContentAlignment="Stretch">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="5" Margin="5" Padding="5" HorizontalAlignment="Stretch">
-                            <StackPanel MouseLeftButtonUp="Edit">
+                            <StackPanel MouseLeftButtonUp="StackPanel_Click">
                                 <TextBlock Text="{Binding ID}" Visibility="Collapsed"/>
                                 <StackPanel>
                                     <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">

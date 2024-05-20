@@ -29,7 +29,7 @@ namespace CarRent.Pages
         {
             if (login.Text == "" && pwd.Password == "")
             {
-                AppData.MainFrame.Navigate(new View()); // for testing purposes
+                AppData.MainFrame.Navigate(new View()); return; // for testing purposes
             }
             if(!AppData.Model.Users.Where(x => x.Login == login.Text && x.Password == pwd.Password).Any())
             {

@@ -45,6 +45,11 @@ namespace CarRent.Pages
 
             IQueryable<Cars> cars = AppData.Model.Cars.Where(x => mf == "*" || mf == x.Models.Manufacturers.Name);
 
+            if (!string.IsNullOrEmpty(search.Text))
+            {
+                cars = cars.Where(x => (x.Models.Manufacturers.Name + x.Models.Name).Contains(search.Text));
+            }
+
             switch (sort.SelectedIndex)
             {
                 case 1:
@@ -56,22 +61,26 @@ namespace CarRent.Pages
             listView.ItemsSource = cars.ToList();
         }
 
-        private void filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Filter(object sender, SelectionChangedEventArgs e)
         {
             Update();
         }
 
         private void Search(object sender, RoutedEventArgs e)
         {
-
-            listView.ItemsSource = AppData.Model.Cars.Where(x => (x.Models.Manufacturers.Name + x.Models.Name).Contains(search.Text)).ToList();
+            Update();
         }
 
-        private void Edit(object sender, MouseButtonEventArgs e)
+        private void StackPanel_Click(object sender, MouseButtonEventArgs e)
         {
-            StackPanel sp = sender as StackPanel;
-            int ID = int.Parse((sp.Children[0] as TextBlock).Text);
-            AppData.MainFrame.Navigate(new AddEdit(AppData.Model.Cars.Where(x => x.ID == ID).First()));
+            //StackPanel sp = sender as StackPanel;
+            //int ID = int.Parse((sp.Children[0] as TextBlock).Text);
+            //AppData.MainFrame.Navigate(new AddEdit(AppData.Model.Cars.Where(x => x.ID == ID).First()));
+        }
+
+        private void ToEdit(object sender, RoutedEventArgs e)
+        {
+            AppData.MainFrame.Navigate(new Edit());
         }
     }
 }
