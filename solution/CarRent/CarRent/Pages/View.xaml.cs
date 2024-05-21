@@ -71,7 +71,7 @@ namespace CarRent.Pages
             Update();
         }
 
-        private void StackPanel_Click(object sender, MouseButtonEventArgs e)
+        private void AddOrder(object sender, MouseButtonEventArgs e)
         {
             StackPanel sp = sender as StackPanel;
             int ID = int.Parse((sp.Children[0] as TextBlock).Text);

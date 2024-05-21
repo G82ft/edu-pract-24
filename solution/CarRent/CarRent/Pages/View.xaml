@@ -45,7 +45,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="5" Margin="5" Padding="5" HorizontalAlignment="Stretch">
-                            <StackPanel MouseLeftButtonUp="StackPanel_Click">
+                            <StackPanel MouseLeftButtonUp="AddOrder">
                                 <TextBlock Text="{Binding ID}" Visibility="Collapsed"/>
                                 <StackPanel>
                                     <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">

@@ -14,7 +14,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="5" Margin="5" Padding="5" HorizontalAlignment="Stretch">
-                            <StackPanel>
+                            <StackPanel MouseLeftButtonUp="RemoveOrder">
                                 <TextBlock Text="{Binding ID}" Visibility="Collapsed"/>
                                 <TextBlock Text="{Binding Cars.ID}" Visibility="Collapsed"/>
                                 <StackPanel>
