@@ -1,0 +1,39 @@
+﻿<Page x:Class="CarRent.Pages.Order"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CarRent.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Order">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <DockPanel HorizontalAlignment="Stretch">
+                <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                    <Label Content="{Binding Cars.Models.Manufacturers.Name}" FontWeight="Black" FontSize="16"/>
+                    <Label Content="{Binding Cars.Models.Name}" FontSize="16"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right">
+                    <Label Content="{Binding Cars.Number}"/>
+                </StackPanel>
+            </DockPanel>
+            <DockPanel HorizontalAlignment="Stretch">
+                <StackPanel>
+                    <Label Content="От"/>
+                    <TextBox Text="{Binding StartDate}" Width="100"/>
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Right">
+                    <Label Content="До"/>
+                    <TextBox Text="{Binding EndDate}" Width="100"/>
+                </StackPanel>
+            </DockPanel>
+            <DockPanel HorizontalAlignment="Right">
+                <Button Content="Отмена" Click="Cancel" Width="100"/>
+                <Button Content="Сохранить" Click="Save" Width="100"/>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Page>
