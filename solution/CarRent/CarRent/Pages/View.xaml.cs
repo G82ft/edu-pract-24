@@ -79,13 +79,13 @@ namespace CarRent.Pages
             {
                 Car = ID,
                 User = AppData.CurrentUser.ID,
-                StartDate = DateTime.Now,
-                EndDate = DateTime.Now,
+                StartDate = DateTime.Now.Date,
+                EndDate = DateTime.Now.Date,
                 State = 0
             };
             AppData.Model.Orders.Add(order);
             AppData.Model.SaveChanges();
-            AppData.MainFrame.Navigate(new Orders());
+            AppData.MainFrame.Navigate(new Order(order));
         }
 
         private void ToEdit(object sender, RoutedEventArgs e)
