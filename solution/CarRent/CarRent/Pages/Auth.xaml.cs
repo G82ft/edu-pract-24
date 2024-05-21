@@ -27,15 +27,12 @@ namespace CarRent.Pages
 
         private void SignIn(object sender, RoutedEventArgs e)
         {
-            if (login.Text == "" && pwd.Password == "")
-            {
-                AppData.MainFrame.Navigate(new View()); return; // for testing purposes
-            }
             if(!AppData.Model.Users.Where(x => x.Login == login.Text && x.Password == pwd.Password).Any())
             {
                 MessageBox.Show("Неверные кредиты!");
                 return;
             }
+            AppData.CurrentUser = AppData.Model.Users.Where(x => x.Login == login.Text && x.Password == pwd.Password).First();
 
             MessageBox.Show($"Добро пожаловать, {login.Text}!");
             AppData.MainFrame.Navigate(new View());

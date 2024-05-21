@@ -12,7 +12,7 @@
         <StackPanel VerticalAlignment="Center">
             <DockPanel HorizontalAlignment="Stretch">
                 <Label Content="Редактирование" FontSize="26"/>
-                <ComboBox Height="30" Width="200" HorizontalAlignment="Right" SelectionChanged="ChangeTable" ItemsSource="{Binding tables}"/>
+                <ComboBox Height="30" Width="200" HorizontalAlignment="Right" SelectionChanged="ChangeTable" ItemsSource="{Binding tables}" SelectedIndex="1"/>
             </DockPanel>
             <StackPanel HorizontalAlignment="Center">
                 <DataGrid x:Name="dataGrid" AutoGeneratingColumn="GeneratingColumn"/>

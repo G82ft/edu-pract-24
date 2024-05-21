@@ -33,8 +33,11 @@
                     <Button Content="🔍" Click="Search"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel>
-                <Button Content="EDIT" Click="ToEdit"/>
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <Button Content="Заказы" Click="ToOrders" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <Button Content="Редактировать" Click="ToEdit" HorizontalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">

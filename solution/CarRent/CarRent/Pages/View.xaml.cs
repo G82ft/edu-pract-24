@@ -73,14 +73,29 @@ namespace CarRent.Pages
 
         private void StackPanel_Click(object sender, MouseButtonEventArgs e)
         {
-            //StackPanel sp = sender as StackPanel;
-            //int ID = int.Parse((sp.Children[0] as TextBlock).Text);
-            //AppData.MainFrame.Navigate(new AddEdit(AppData.Model.Cars.Where(x => x.ID == ID).First()));
+            StackPanel sp = sender as StackPanel;
+            int ID = int.Parse((sp.Children[0] as TextBlock).Text);
+            CarRent.Orders order = new CarRent.Orders()
+            {
+                Car = ID,
+                User = AppData.CurrentUser.ID,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                State = 0
+            };
+            AppData.Model.Orders.Add(order);
+            AppData.Model.SaveChanges();
+            AppData.MainFrame.Navigate(new Orders());
         }
 
         private void ToEdit(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new Edit());
+        }
+
+        private void ToOrders(object sender, RoutedEventArgs e)
+        {
+            AppData.MainFrame.Navigate(new Orders());
         }
     }
 }

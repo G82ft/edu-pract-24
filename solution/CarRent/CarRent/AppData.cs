@@ -11,5 +11,6 @@ namespace CarRent
     {
         public static Frame MainFrame;
         public static CarRentEntities Model;
+        public static Users CurrentUser;
     }
 }
