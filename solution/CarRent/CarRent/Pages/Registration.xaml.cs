@@ -26,9 +26,8 @@ namespace CarRent.Pages
         {
             string loginTxt = login.Text;
 
-            if (AppData.Model.Users.Where(x => x.Login == loginTxt).Any())
+            if (!Validate())
             {
-                MessageBox.Show("Пользователь с таким логином уже существует!");
                 return;
             }
             string password = pwd.Text;
@@ -43,7 +42,7 @@ namespace CarRent.Pages
             );
             AppData.Model.SaveChanges();
             MessageBox.Show("Регистрация прошла успешно!");
-            AppData.MainFrame.Navigate(new View());
+            AppData.MainFrame.Navigate(new Auth());
         }
 
         private bool Validate()
@@ -67,8 +66,18 @@ namespace CarRent.Pages
                 return false;
             }
 
-            return Regex.Match(phoneTxt, @"^[\d]{11}$").Success
-                && Regex.Match(emailTxt, @"^[a-z\d.]{1,63}[a-z\d]@[a-z\d]{1,63}\.[a-z]{1,192}$").Success;
+            if (!Regex.Match(phoneTxt, @"^[\d]{11}$").Success)
+            {
+                MessageBox.Show("Телефон должен быть длинной 11 цифр без символов.");
+                return false;
+            }
+            if (!Regex.Match(emailTxt, @"^[a-z\d.]{1,63}[a-z\d]@[a-z\d]{1,63}\.[a-z]{1,192}$").Success)
+            {
+                MessageBox.Show("Неверный формат Email!");
+                return false;
+            }
+
+            return true;
         }
 
         private void ToSignIn(object sender, RoutedEventArgs e)

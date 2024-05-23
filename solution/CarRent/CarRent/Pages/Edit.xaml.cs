@@ -44,6 +44,11 @@ namespace CarRent.Pages
 
         private void ChangeTable(object sender, SelectionChangedEventArgs e)
         {
+            if (!IsInitialized)
+            {
+                return;
+            }
+
             switch((sender as ComboBox).SelectedValue)
             {
                 case "Cars":
@@ -100,6 +105,7 @@ namespace CarRent.Pages
         private void Save(object sender, RoutedEventArgs e)
         {
             AppData.Model.SaveChanges();
+            AppData.MainFrame.GoBack();
         }
 
         private void Cancel(object sender, RoutedEventArgs e)

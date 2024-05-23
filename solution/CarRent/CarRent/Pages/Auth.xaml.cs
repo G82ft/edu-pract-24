@@ -38,7 +38,7 @@ namespace CarRent.Pages
             AppData.MainFrame.Navigate(new View());
         }
 
-        private void SignUp(object sender, RoutedEventArgs e)
+        private void ToSignUp(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new Registration());
         }
