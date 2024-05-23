@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,15 @@ namespace CarRent.Pages
         public Auth()
         {
             InitializeComponent();
+            try
+            {
+                AppData.Model.Database.Connection.Open();
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("кажется кто-то недостаточный интеллектом забыл подключить бд");
+                System.Windows.Application.Current.Shutdown();
+            }
         }
 
         private void SignIn(object sender, RoutedEventArgs e)
