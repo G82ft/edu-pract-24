@@ -25,7 +25,7 @@ namespace CarRent.Pages
         {
             InitializeComponent();
 
-            if (AppData.CurrentUser.Roles.Name != "Admin")
+            if (AppData.CurrentUser.Role != 2)
             {
                 edit.Visibility = Visibility.Collapsed;
             }
