@@ -56,7 +56,7 @@
                                     <DockPanel HorizontalAlignment="Stretch">
                                         <StackPanel Orientation="Horizontal">
                                             <Label Content="{Binding Cost}"/>
-                                            <Label Content="Р"/>
+                                            <Label Content="руб./день"/>
                                         </StackPanel>
 
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

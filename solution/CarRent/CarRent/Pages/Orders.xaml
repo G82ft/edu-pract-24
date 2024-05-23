@@ -45,5 +45,8 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
+        <StackPanel>
+            <Button Content="PDF" Click="ToPDF"/>
+        </StackPanel>
     </Grid>
 </Page>

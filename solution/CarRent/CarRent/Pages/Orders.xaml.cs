@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +38,31 @@ namespace CarRent.Pages
             AppData.Model.SaveChanges();
             AppData.MainFrame.GoBack();
             AppData.MainFrame.Navigate(new Orders());
+        }
+
+        private void ToPDF(object sender, RoutedEventArgs e)
+        {
+            PrintDocument document = new PrintDocument();
+            document.PrintPage += new PrintPageEventHandler(OnPrintPage);
+            document.Print();
+        }
+
+        private static void OnPrintPage(object sender, PrintPageEventArgs e)
+        {
+            float y = 0;
+            foreach (CarRent.Orders order in AppData.CurrentUser.Orders.ToList())
+            {
+                Cars car = order.Cars;
+                Models model = car.Models;
+                e.Graphics.DrawString(
+                    $"{model.Manufacturers.Name} {model.Name} ({car.Number}): {car.Cost * (order.EndDate - order.StartDate).Days} руб.",
+                    new Font("Courier New", 12), System.Drawing.Brushes.Black, 0, y);
+                y += 20;
+                e.Graphics.DrawString(
+                    $"От {order.StartDate.Date} до {order.EndDate.Date}",
+                    new Font("Courier New", 12), System.Drawing.Brushes.Black, 0, y);
+                y += 30;
+            }
         }
     }
 }
