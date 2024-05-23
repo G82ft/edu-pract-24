@@ -24,6 +24,11 @@ namespace CarRent.Pages
         public View()
         {
             InitializeComponent();
+
+            if (AppData.CurrentUser.Roles.Name != "Amdin")
+            {
+                edit.Visibility = Visibility.Collapsed;
+            }
             
             List<string> mfs = AppData.Model.Manufacturers.Select(x => x.Name).ToList();
             mfs.Insert(0, "*");

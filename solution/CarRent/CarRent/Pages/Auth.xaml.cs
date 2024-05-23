@@ -40,26 +40,7 @@ namespace CarRent.Pages
 
         private void SignUp(object sender, RoutedEventArgs e)
         {
-            string loginTxt = login.Text;
-
-            if (AppData.Model.Users.Where(x => x.Login == loginTxt).Any())
-            {
-                MessageBox.Show("Пользователь с таким логином уже существует!");
-                return;
-            }
-            string password = pwd.Password;
-            Users user = new Users()
-            {
-                Login = loginTxt,
-                Password = password,
-                Role = 1
-            };
-            AppData.Model.Users.Add(
-                user
-            );
-            AppData.Model.SaveChanges();
-            MessageBox.Show("Регистрация прошла успешно!");
-            AppData.MainFrame.Navigate(new View());
+            AppData.MainFrame.Navigate(new Registration());
         }
     }
 }

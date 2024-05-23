@@ -37,7 +37,7 @@
                 <Button Content="Заказы" Click="ToOrders" HorizontalAlignment="Center"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                <Button Content="Редактировать" Click="ToEdit" HorizontalAlignment="Center"/>
+                <Button x:Name="edit" Content="Редактировать" Click="ToEdit" HorizontalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
