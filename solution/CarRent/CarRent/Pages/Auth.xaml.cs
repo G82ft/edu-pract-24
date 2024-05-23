@@ -24,6 +24,7 @@ namespace CarRent.Pages
         public Auth()
         {
             InitializeComponent();
+
             try
             {
                 AppData.Model.Database.Connection.Open();
@@ -32,6 +33,14 @@ namespace CarRent.Pages
             {
                 MessageBox.Show("кажется кто-то недостаточный интеллектом забыл подключить бд");
                 System.Windows.Application.Current.Shutdown();
+            }
+            catch (InvalidOperationException)
+            {
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
