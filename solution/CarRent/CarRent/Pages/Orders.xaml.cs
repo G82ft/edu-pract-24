@@ -22,10 +22,19 @@ namespace CarRent.Pages
     /// </summary>
     public partial class Orders : Page
     {
-        public Orders()
+        public Orders(bool allUsers = false)
         {
             InitializeComponent();
-            listView.ItemsSource = AppData.CurrentUser.Orders.Where(x => x.User == AppData.CurrentUser.ID).ToList();
+            if (!allUsers)
+            {
+                listView.ItemsSource = AppData.CurrentUser.Orders.Where(x => x.User == AppData.CurrentUser.ID).ToList();
+            }
+            else
+            {
+                listView.ItemsSource = AppData.Model.Orders.ToList();
+                pdf.Visibility = Visibility.Collapsed;
+            }
+            
         }
 
         private void OrderClick(object sender, MouseButtonEventArgs e)

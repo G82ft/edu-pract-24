@@ -44,11 +44,15 @@
                                         </StackPanel>
 
                                         <StackPanel HorizontalAlignment="Right">
-                                            <Label Content="До"/>
-                                            <Label Content="{Binding EndDate}"/>
+                                            <Label Content="До" HorizontalAlignment="Right"/>
+                                            <Label Content="{Binding EndDate}" HorizontalAlignment="Right"/>
                                             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                                                 <Label Content="Итого:"/>
                                                 <Label Content="{Binding TotalCost}"/>
+                                            </StackPanel>
+                                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                                <Label Content="Для пользователя:"/>
+                                                <Label Content="{Binding Users.Login}"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </DockPanel>

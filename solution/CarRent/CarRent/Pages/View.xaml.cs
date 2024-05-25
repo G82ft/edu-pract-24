@@ -25,12 +25,15 @@ namespace CarRent.Pages
         {
             InitializeComponent();
 
-            if (AppData.CurrentUser.Role != 2)
+            if (AppData.CurrentUser.Role < 3)
             {
                 add.Visibility = Visibility.Collapsed;
                 edit.Visibility = Visibility.Collapsed;
-                editOrders.Visibility = Visibility.Collapsed;
                 editUsers.Visibility = Visibility.Collapsed;
+            }
+            else if (AppData.CurrentUser.Role < 2)
+            {
+                editOrders.Visibility = Visibility.Collapsed;
             }
 
             List<string> mfs = AppData.Model.Manufacturers.Select(x => x.Name).ToList();
@@ -150,7 +153,7 @@ namespace CarRent.Pages
 
         private void EditOrders(object sender, RoutedEventArgs e)
         {
-
+            AppData.MainFrame.Navigate(new Orders(true));
         }
     }
 }
