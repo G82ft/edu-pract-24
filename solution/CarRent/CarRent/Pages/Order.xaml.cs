@@ -28,8 +28,6 @@ namespace CarRent.Pages
             InitializeComponent();
             orders = order;
             DataContext = orders;
-
-            this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnValidationRaised));
         }
 
         private void Save(object sender, RoutedEventArgs e)
@@ -61,35 +59,6 @@ namespace CarRent.Pages
         {
             return DateTime.TryParseExact(date, format, new CultureInfo("en-US"),
                                  DateTimeStyles.None, out result);
-        }
-
-        private void OnValidationRaised(object sender, RoutedEventArgs e)
-        {
-            var args = (ValidationErrorEventArgs)e;
-
-            if (IsInitialized)
-            {
-
-                // Check if the error was caused by an exception
-                if (args.Error.RuleInError is ExceptionValidationRule)
-                {
-                    // Add or remove the error from the ViewModel
-                    if (args.Action == ValidationErrorEventAction.Added)
-                        this.AddUIValidationError();
-                    else if (args.Action == ValidationErrorEventAction.Removed)
-                        this.RemoveUIValidationError();
-                }
-            }
-        }
-        private int _errorCount = 0;
-        void AddUIValidationError()
-        {
-            _errorCount++;
-        }
-
-        void RemoveUIValidationError()
-        {
-            _errorCount--;
         }
     }
 }

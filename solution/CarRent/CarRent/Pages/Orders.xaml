@@ -44,6 +44,10 @@
                                             <Label Content="{Binding EndDate}"/>
                                         </StackPanel>
                                     </DockPanel>
+                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <Label Content="Итого:"/>
+                                        <Label Content="{Binding TotalCost}"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
