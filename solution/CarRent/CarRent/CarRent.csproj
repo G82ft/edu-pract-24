@@ -117,6 +117,9 @@
     <Compile Include="Pages\Edit.xaml.cs">
       <DependentUpon>Edit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditUsers.xaml.cs">
+      <DependentUpon>EditUsers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Order.xaml.cs">
       <DependentUpon>Order.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Edit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -226,6 +233,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\audi.jpg" />
+    <Resource Include="Images\bmw.jpg" />
+    <Resource Include="Images\def.jpg" />
+    <Resource Include="Images\ford.jpg" />
+    <Resource Include="Images\fordf150.jpg" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -237,5 +249,6 @@
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

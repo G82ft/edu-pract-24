@@ -27,9 +27,9 @@ namespace CarRent.Pages
 
             if (AppData.CurrentUser.Role != 2)
             {
-                edit.Visibility = Visibility.Collapsed;
+                add.Visibility = Visibility.Collapsed;
             }
-            
+
             List<string> mfs = AppData.Model.Manufacturers.Select(x => x.Name).ToList();
             mfs.Insert(0, "*");
 
@@ -71,7 +71,7 @@ namespace CarRent.Pages
             Update();
         }
 
-        private void Search(object sender, RoutedEventArgs e)
+        private void Search(object sender, TextChangedEventArgs e)
         {
             Update();
         }
@@ -101,6 +101,48 @@ namespace CarRent.Pages
         private void ToOrders(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new Orders());
+        }
+
+        private void ToEdit(object sender, MouseButtonEventArgs e)
+        {
+            if (AppData.CurrentUser.Role != 2)
+            {
+                return;
+            }
+
+            StackPanel sp = sender as StackPanel;
+            int ID = int.Parse((sp.Children[0] as TextBlock).Text);
+
+            AppData.MainFrame.Navigate(
+                new AddEdit(
+                    AppData.Model.Cars.Where(x => x.ID == ID).First()));
+        }
+
+        private void Add(object sender, RoutedEventArgs e)
+        {
+            Cars car = new Cars()
+            {
+                Model = 1,
+                Number = "",
+                Mileage = 0,
+                Cost = 100
+            };
+            AppData.Model.Cars.Add(car);
+            AppData.Model.SaveChanges();
+            AppData.Refresh();
+            AppData.MainFrame.Navigate(
+                new AddEdit(
+                    AppData.Model.Cars.OrderByDescending(x => x.ID).FirstOrDefault()));
+        }
+
+        private void EditUsers(object sender, RoutedEventArgs e)
+        {
+            AppData.MainFrame.Navigate(new EditUsers());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AppData.MainFrame.Navigate(new Edit());
         }
     }
 }

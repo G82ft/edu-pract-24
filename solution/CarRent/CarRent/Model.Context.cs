@@ -25,11 +25,11 @@ namespace CarRent
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cars> Cars { get; set; }
         public virtual DbSet<Manufacturers> Manufacturers { get; set; }
         public virtual DbSet<Models> Models { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Cars> Cars { get; set; }
     }
 }

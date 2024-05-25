@@ -29,15 +29,18 @@
             <StackPanel>
                 <Label Content="Поиск"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="search" Width="100"/>
-                    <Button Content="🔍" Click="Search"/>
+                    <TextBox x:Name="search" Width="100" TextChanged="Search"/>
+                    <Button Content="🔍" Click="Button_Click"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
                 <Button Content="Заказы" Click="ToOrders" HorizontalAlignment="Center"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                <Button x:Name="edit" Content="Редактировать" Click="ToEdit" HorizontalAlignment="Center"/>
+                <Button x:Name="add" Content="Добавить" Click="Add" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <Button x:Name="edit" Content="Редактировать пользователей" Click="EditUsers" HorizontalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
@@ -45,13 +48,15 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="5" Margin="5" Padding="5" HorizontalAlignment="Stretch">
-                            <StackPanel MouseLeftButtonUp="AddOrder">
+                            <StackPanel MouseLeftButtonUp="AddOrder" MouseRightButtonUp="ToEdit">
                                 <TextBlock Text="{Binding ID}" Visibility="Collapsed"/>
                                 <StackPanel>
                                     <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                                         <Label Content="{Binding Models.Manufacturers.Name}" FontWeight="Black" FontSize="16"/>
                                         <Label Content="{Binding Models.Name}" FontSize="16"/>
                                     </StackPanel>
+
+                                    <Image Source="{Binding ImagePath}" Width="100" Height="100" HorizontalAlignment="Left"/>
 
                                     <DockPanel HorizontalAlignment="Stretch">
                                         <StackPanel Orientation="Horizontal">

@@ -33,11 +33,56 @@ namespace CarRent.Pages
             DataContext = this;
             
             InitializeComponent();
+
+            mfs.SelectedItem = car.Models.Manufacturers.Name;
+
+            mdls.SelectedItem = car.Models.Name;
+
+            mdls.ItemsSource = AppData.Model.Models.Where(x => x.Manufacturers.Name == mfs.SelectedItem).Select(x => x.Name).ToList();
         }
 
         private void Save(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine(car.Mileage.ToString());
+            Console.WriteLine(mileage.Text);
+            Console.WriteLine(car.Mileage.ToString() != mileage.Text);
+            if (car.Number != number.Text
+                || car.Cost.ToString().Replace(',', '.') != cost.Text
+                || car.Mileage.ToString() != mileage.Text)
+            {
+                MessageBox.Show("Неверный формат данных!");
+                return;
+            }
+            car.Model = AppData.Model.Models.Where(x => x.Name == mdls.SelectedItem).Select(x => x.ID).FirstOrDefault();
             AppData.Model.SaveChanges();
+            AppData.MainFrame.GoBack();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!IsInitialized) return;
+
+            mdls.ItemsSource = AppData.Model.Models.Where(x => x.Manufacturers.Name == mfs.SelectedItem).Select(x => x.Name).ToList();
+            mdls.SelectedIndex = 0;
+        }
+
+        private void Delete(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Удалить авто?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.No)
+            {
+                return;
+            }
+
+            AppData.Model.Cars.Remove(car);
+            try
+            {
+                AppData.Model.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Невозможно удалить машину, так как есть незавершённый заказ.");
+            }
+            AppData.MainFrame.GoBack();
         }
     }
 }

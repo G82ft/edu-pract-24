@@ -11,7 +11,8 @@ namespace CarRent
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.IO;
+
     public partial class Cars
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,7 +26,20 @@ namespace CarRent
         public string Number { get; set; }
         public Nullable<int> Mileage { get; set; }
         public decimal Cost { get; set; }
+        public string Image { get; set; }
     
+        public string ImagePath
+        {
+            get
+            {
+                if (this.Image == null || !File.Exists($"..\\..\\Images\\{Image}"))
+                {
+                    Console.WriteLine(Directory.GetCurrentDirectory());
+                    return $"..\\Images\\def.jpg";
+                }
+                return $"..\\Images\\{Image}";
+            }
+        }
         public virtual Models Models { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }

@@ -9,6 +9,7 @@
     <Property Name="Number" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="Mileage" Type="int" />
     <Property Name="Cost" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Manufacturers">
     <Key>

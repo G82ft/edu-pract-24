@@ -34,3 +34,5 @@ C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\Or
 C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\Order.baml
 C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\Registration.g.cs
 C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\Registration.baml
+C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\EditUsers.g.cs
+C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\EditUsers.baml

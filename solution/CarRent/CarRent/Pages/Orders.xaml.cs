@@ -25,11 +25,16 @@ namespace CarRent.Pages
         public Orders()
         {
             InitializeComponent();
-            listView.ItemsSource = AppData.CurrentUser.Orders.ToList();
+            listView.ItemsSource = AppData.CurrentUser.Orders.Where(x => x.User == AppData.CurrentUser.ID).ToList();
         }
 
         private void RemoveOrder(object sender, MouseButtonEventArgs e)
         {
+            if (MessageBox.Show("Отменить заказ?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.No)
+            {
+                return;
+            }
+
             StackPanel sp = sender as StackPanel;
             int ID = int.Parse((sp.Children[0] as TextBlock).Text);
             AppData.Model.Orders.Remove(
@@ -50,19 +55,26 @@ namespace CarRent.Pages
         private static void OnPrintPage(object sender, PrintPageEventArgs e)
         {
             float y = 0;
-            foreach (CarRent.Orders order in AppData.CurrentUser.Orders.ToList())
+            foreach (CarRent.Orders order in AppData.CurrentUser.Orders.Where(x => x.State == 0).ToList())
             {
                 Cars car = order.Cars;
                 Models model = car.Models;
                 e.Graphics.DrawString(
-                    $"{model.Manufacturers.Name} {model.Name} ({car.Number}): {car.Cost * (order.EndDate - order.StartDate).Days} руб.",
+                    $"{model.Manufacturers.Name} {model.Name} (Номер - {car.Number}): {car.Cost * (order.EndDate - order.StartDate).Days} руб.",
                     new Font("Courier New", 12), System.Drawing.Brushes.Black, 0, y);
                 y += 20;
                 e.Graphics.DrawString(
                     $"От {order.StartDate.Date} до {order.EndDate.Date}",
                     new Font("Courier New", 12), System.Drawing.Brushes.Black, 0, y);
                 y += 30;
+                order.State = 1;
+                AppData.Model.SaveChanges();
             }
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            AppData.MainFrame.Navigate(new View());
         }
     }
 }

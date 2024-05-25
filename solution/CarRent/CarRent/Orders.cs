@@ -21,7 +21,7 @@ namespace CarRent
         public System.DateTime EndDate { get; set; }
         public int State { get; set; }
     
-        public virtual Cars Cars { get; set; }
         public virtual Users Users { get; set; }
+        public virtual Cars Cars { get; set; }
     }
 }

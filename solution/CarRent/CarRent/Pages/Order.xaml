@@ -9,25 +9,27 @@
       Title="Order">
 
     <Grid>
-        <StackPanel VerticalAlignment="Center">
+        <StackPanel VerticalAlignment="Center" MaxWidth="400">
             <DockPanel HorizontalAlignment="Stretch">
                 <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                     <Label Content="{Binding Cars.Models.Manufacturers.Name}" FontWeight="Black" FontSize="16"/>
                     <Label Content="{Binding Cars.Models.Name}" FontSize="16"/>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="Номер:"/>
                     <Label Content="{Binding Cars.Number}"/>
                 </StackPanel>
             </DockPanel>
+            <Image Source="{Binding Cars.ImagePath}" Width="100" Height="100" HorizontalAlignment="Left"/>
             <DockPanel HorizontalAlignment="Stretch">
                 <StackPanel>
                     <Label Content="От"/>
-                    <TextBox Text="{Binding StartDate}" Width="100"/>
+                    <TextBox x:Name="start" Text="{Binding StartDate, ValidatesOnExceptions=True, NotifyOnValidationError=True}" Width="100"/>
                 </StackPanel>
 
                 <StackPanel HorizontalAlignment="Right">
                     <Label Content="До"/>
-                    <TextBox Text="{Binding EndDate}" Width="100"/>
+                    <TextBox x:Name="end" Text="{Binding EndDate, ValidatesOnExceptions=True, NotifyOnValidationError=True}" Width="100"/>
                 </StackPanel>
             </DockPanel>
             <DockPanel HorizontalAlignment="Right">

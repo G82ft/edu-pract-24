@@ -25,25 +25,28 @@
                 <Label Content="{Binding car.ID, StringFormat=ID: {0}}"/>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Manufacturer"/>
-                    <ComboBox ItemsSource="{Binding manufacturers}" Text="{Binding car.Models.Manufacturers.Name}"/>
+                    <ComboBox ItemsSource="{Binding manufacturers}" SelectionChanged="ComboBox_SelectionChanged" x:Name="mfs"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Model"/>
-                    <ComboBox ItemsSource="{Binding models}" Text="{Binding car.Models.Name}"/>
+                    <ComboBox x:Name="mdls"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Number"/>
-                    <TextBox Text="{Binding car.Number}"/>
+                    <TextBox x:Name="number" Text="{Binding car.Number}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Cost"/>
-                    <TextBox Text="{Binding car.Cost}"/>
+                    <TextBox x:Name="cost" Text="{Binding car.Cost}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Mileage"/>
-                    <TextBox Text="{Binding car.Mileage}"/>
+                    <TextBox x:Name="mileage" Text="{Binding car.Mileage}"/>
                 </StackPanel>
-                <Button Content="Edit" Click="Save"/>
+                <DockPanel>
+                    <Button Content="Удалить" Click="Delete" Width="100"/>
+                    <Button Content="Сохранить" Click="Save"/>
+                </DockPanel>
             </StackPanel>
         </StackPanel>
     </Grid>

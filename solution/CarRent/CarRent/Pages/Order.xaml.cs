@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace CarRent.Pages
 {
@@ -26,18 +28,68 @@ namespace CarRent.Pages
             InitializeComponent();
             orders = order;
             DataContext = orders;
+
+            this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnValidationRaised));
         }
 
         private void Save(object sender, RoutedEventArgs e)
         {
+            DateTime startDate;
+            DateTime endDate;
+            if (!(CheckDateFormat(start.Text, out startDate) & CheckDateFormat(end.Text, out endDate)))
+            {
+                MessageBox.Show("Некорректный формат данных!");
+                return;
+            }
+            if (endDate <= startDate)
+            {
+                MessageBox.Show("Конечная дата должна быть после начальной.");
+                return;
+            }
             AppData.Model.SaveChanges();
-            AppData.MainFrame.GoBack();
+            AppData.MainFrame.Navigate(new Orders());
         }
 
         private void Cancel(object sender, RoutedEventArgs e)
         {
             AppData.Model.Orders.Remove(orders);
-            Save(sender, e);
+            AppData.Model.SaveChanges();
+            AppData.MainFrame.GoBack();
+        }
+
+        public static bool CheckDateFormat(string date, out DateTime result, string format = "M/dd/yyyy hh:mm:ss tt")
+        {
+            return DateTime.TryParseExact(date, format, new CultureInfo("en-US"),
+                                 DateTimeStyles.None, out result);
+        }
+
+        private void OnValidationRaised(object sender, RoutedEventArgs e)
+        {
+            var args = (ValidationErrorEventArgs)e;
+
+            if (IsInitialized)
+            {
+
+                // Check if the error was caused by an exception
+                if (args.Error.RuleInError is ExceptionValidationRule)
+                {
+                    // Add or remove the error from the ViewModel
+                    if (args.Action == ValidationErrorEventAction.Added)
+                        this.AddUIValidationError();
+                    else if (args.Action == ValidationErrorEventAction.Removed)
+                        this.RemoveUIValidationError();
+                }
+            }
+        }
+        private int _errorCount = 0;
+        void AddUIValidationError()
+        {
+            _errorCount++;
+        }
+
+        void RemoveUIValidationError()
+        {
+            _errorCount--;
         }
     }
 }

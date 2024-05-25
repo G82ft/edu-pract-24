@@ -1,0 +1,43 @@
+﻿<Page x:Class="CarRent.Pages.EditUsers"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CarRent.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditUsers">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="95*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0" MouseMove="ScrollViewer_MouseMove">
+            <ListView x:Name="listView" HorizontalContentAlignment="Stretch">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding ID}" Visibility="Collapsed"/>
+                            <TextBox Text="{Binding Login}"/>
+                            <TextBox Text="{Binding Password}"/>
+                            <ComboBox SelectionChanged="ChangeRole">
+                                <ComboBoxItem Content="User"/>
+                                <ComboBoxItem Content="Admin"/>
+                            </ComboBox>
+                            <Button Content="X" Click="Delete"/>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+        <StackPanel Grid.Row="1">
+            <Button Content="Сохранить" Click="Save"/>
+        </StackPanel>
+    </Grid>
+</Page>

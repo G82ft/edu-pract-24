@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище CarRentModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище CarRentModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cars">
           <Key>
             <PropertyRef Name="ID" />
@@ -14,6 +14,7 @@
           <Property Name="Number" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Mileage" Type="int" />
           <Property Name="Cost" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Manufacturers">
           <Key>
@@ -145,23 +146,10 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CarRentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Cars">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Model" Type="Int32" Nullable="false" />
-          <Property Name="Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Mileage" Type="Int32" />
-          <Property Name="Cost" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Models" Relationship="Self.FK_Cars_Models" FromRole="Cars" ToRole="Models" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Cars" FromRole="Cars" ToRole="Orders" />
-        </EntityType>
         <EntityType Name="Manufacturers">
           <Key>
             <PropertyRef Name="ID" />
@@ -177,8 +165,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Manufacturer" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_Models" FromRole="Models" ToRole="Cars" />
           <NavigationProperty Name="Manufacturers" Relationship="Self.FK_Models_Manufacturers" FromRole="Models" ToRole="Manufacturers" />
+          <NavigationProperty Name="Cars" Relationship="CarRentModel.FK_Cars_Models" FromRole="Models" ToRole="Cars" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -190,8 +178,8 @@
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="State" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cars" Relationship="Self.FK_Orders_Cars" FromRole="Orders" ToRole="Cars" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
+          <NavigationProperty Name="Cars" Relationship="CarRentModel.FK_Orders_Cars" FromRole="Orders" ToRole="Cars" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -212,30 +200,6 @@
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Users" FromRole="Users" ToRole="Orders" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
         </EntityType>
-        <Association Name="FK_Cars_Models">
-          <End Role="Models" Type="Self.Models" Multiplicity="1" />
-          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Models">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Cars">
-              <PropertyRef Name="Model" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Orders_Cars">
-          <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cars">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="Car" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Models_Manufacturers">
           <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="1" />
           <End Role="Models" Type="Self.Models" Multiplicity="*" />
@@ -273,20 +237,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CarRentEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cars" EntityType="Self.Cars" />
           <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" />
           <EntitySet Name="Models" EntityType="Self.Models" />
           <EntitySet Name="Orders" EntityType="Self.Orders" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK_Cars_Models" Association="Self.FK_Cars_Models">
-            <End Role="Models" EntitySet="Models" />
-            <End Role="Cars" EntitySet="Cars" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Orders_Cars" Association="Self.FK_Orders_Cars">
-            <End Role="Cars" EntitySet="Cars" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
           <AssociationSet Name="FK_Models_Manufacturers" Association="Self.FK_Models_Manufacturers">
             <End Role="Manufacturers" EntitySet="Manufacturers" />
             <End Role="Models" EntitySet="Models" />
@@ -299,24 +254,59 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Cars" EntityType="CarRentModel.Cars" />
+          <AssociationSet Name="FK_Cars_Models" Association="CarRentModel.FK_Cars_Models">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Cars" Association="CarRentModel.FK_Orders_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Model" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Mileage" Type="Int32" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Models" Relationship="CarRentModel.FK_Cars_Models" FromRole="Cars" ToRole="Models" />
+          <NavigationProperty Name="Orders" Relationship="CarRentModel.FK_Orders_Cars" FromRole="Cars" ToRole="Orders" />
+        </EntityType>
+        <Association Name="FK_Cars_Models">
+          <End Type="CarRentModel.Models" Role="Models" Multiplicity="1" />
+          <End Type="CarRentModel.Cars" Role="Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="Model" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Cars">
+          <End Type="CarRentModel.Cars" Role="Cars" Multiplicity="1" />
+          <End Type="CarRentModel.Orders" Role="Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Car" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище CarRentModelContainer" CdmEntityContainer="CarRentEntities">
-          <EntitySetMapping Name="Cars">
-            <EntityTypeMapping TypeName="CarRentModel.Cars">
-              <MappingFragment StoreEntitySet="Cars">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Manufacturers">
             <EntityTypeMapping TypeName="CarRentModel.Manufacturers">
               <MappingFragment StoreEntitySet="Manufacturers">
@@ -361,6 +351,18 @@
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="CarRentModel.Cars">
+              <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

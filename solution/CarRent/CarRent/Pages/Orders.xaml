@@ -9,6 +9,10 @@
       Title="Orders">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <ListView x:Name="listView" HorizontalContentAlignment="Stretch">
                 <ListView.ItemTemplate>
@@ -23,10 +27,12 @@
                                             <Label Content="{Binding Cars.Models.Manufacturers.Name}" FontWeight="Black" FontSize="16"/>
                                             <Label Content="{Binding Cars.Models.Name}" FontSize="16"/>
                                         </StackPanel>
-                                        <StackPanel HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Label Content="Номер:"/>
                                             <Label Content="{Binding Cars.Number}"/>
                                         </StackPanel>
                                     </DockPanel>
+                                    <Image Source="{Binding Cars.ImagePath}" Width="100" Height="100" HorizontalAlignment="Left"/>
                                     <DockPanel HorizontalAlignment="Stretch">
                                         <StackPanel>
                                             <Label Content="От"/>
@@ -45,8 +51,9 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
-        <StackPanel>
-            <Button Content="PDF" Click="ToPDF"/>
-        </StackPanel>
+        <DockPanel Grid.Row="0" HorizontalAlignment="Stretch">
+            <Button Content="PDF" Click="ToPDF" Width="200"/>
+            <Button Content="Назад" Click="Back" Width="200" HorizontalAlignment="Right"/>
+        </DockPanel>
     </Grid>
 </Page>
