@@ -85,7 +85,7 @@ namespace CarRent.Pages
                 Car = ID,
                 User = AppData.CurrentUser.ID,
                 StartDate = DateTime.Now.Date,
-                EndDate = DateTime.Now.Date,
+                EndDate = DateTime.Now.Date.AddDays(1),
                 State = 0
             };
             AppData.Model.Orders.Add(order);
