@@ -28,6 +28,9 @@ namespace CarRent.Pages
             if (AppData.CurrentUser.Role != 2)
             {
                 add.Visibility = Visibility.Collapsed;
+                edit.Visibility = Visibility.Collapsed;
+                editOrders.Visibility = Visibility.Collapsed;
+                editUsers.Visibility = Visibility.Collapsed;
             }
 
             List<string> mfs = AppData.Model.Manufacturers.Select(x => x.Name).ToList();
@@ -86,7 +89,7 @@ namespace CarRent.Pages
                 User = AppData.CurrentUser.ID,
                 StartDate = DateTime.Now.Date,
                 EndDate = DateTime.Now.Date.AddDays(1),
-                State = 0
+                State = AppData.Model.States.Where(x => x.Name == "Подготовка").FirstOrDefault().ID,
             };
             AppData.Model.Orders.Add(order);
             AppData.Model.SaveChanges();
@@ -140,9 +143,14 @@ namespace CarRent.Pages
             AppData.MainFrame.Navigate(new EditUsers());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Toedit(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new Edit());
+        }
+
+        private void EditOrders(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

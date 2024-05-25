@@ -84,6 +84,8 @@
     <Compile Include="Cars.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Cars.cs" />
+    <Compile Include="Classes\Orders.cs" />
     <Compile Include="Manufacturers.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

@@ -85,6 +85,10 @@
       <End Role="Cars" EntitySet="Cars" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
+    <AssociationSet Name="FK_Orders_States" Association="CarRentModel.FK_Orders_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
     <AssociationSet Name="FK_Orders_Users" Association="CarRentModel.FK_Orders_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Orders" EntitySet="Orders" />
@@ -126,6 +130,7 @@
     <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="State" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Cars" Relationship="CarRentModel.FK_Orders_Cars" FromRole="Orders" ToRole="Cars" />
+    <NavigationProperty Name="States" Relationship="CarRentModel.FK_Orders_States" FromRole="Orders" ToRole="States" />
     <NavigationProperty Name="Users" Relationship="CarRentModel.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
   </EntityType>
   <EntityType Name="States">
@@ -134,6 +139,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="CarRentModel.FK_Orders_States" FromRole="States" ToRole="Orders" />
   </EntityType>
   <Association Name="FK_Orders_Cars">
     <End Type="CarRentModel.Cars" Role="Cars" Multiplicity="1" />
@@ -144,6 +150,18 @@
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="Car" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_States">
+    <End Type="CarRentModel.States" Role="States" Multiplicity="1" />
+    <End Type="CarRentModel.Orders" Role="Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="State" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

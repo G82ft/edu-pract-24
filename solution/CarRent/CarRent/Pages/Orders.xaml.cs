@@ -28,21 +28,14 @@ namespace CarRent.Pages
             listView.ItemsSource = AppData.CurrentUser.Orders.Where(x => x.User == AppData.CurrentUser.ID).ToList();
         }
 
-        private void RemoveOrder(object sender, MouseButtonEventArgs e)
+        private void OrderClick(object sender, MouseButtonEventArgs e)
         {
-            if (MessageBox.Show("Отменить заказ?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.No)
-            {
-                return;
-            }
-
             StackPanel sp = sender as StackPanel;
             int ID = int.Parse((sp.Children[0] as TextBlock).Text);
-            AppData.Model.Orders.Remove(
-                AppData.Model.Orders.Where(x => x.ID == ID).First()
-            );
-            AppData.Model.SaveChanges();
-            AppData.MainFrame.GoBack();
-            AppData.MainFrame.Navigate(new Orders());
+
+            CarRent.Orders order = AppData.Model.Orders.Where(x => x.ID == ID).First();
+
+            AppData.MainFrame.Navigate(new Order(order));
         }
 
         private void ToPDF(object sender, RoutedEventArgs e)
@@ -60,14 +53,14 @@ namespace CarRent.Pages
                 Cars car = order.Cars;
                 Models model = car.Models;
                 e.Graphics.DrawString(
-                    $"{model.Manufacturers.Name} {model.Name} (Номер - {car.Number}): {car.Cost * (order.EndDate - order.StartDate).Days} руб.",
+                    $"{model.Manufacturers.Name} {model.Name} (Номер - {car.Number}): {order.TotalCost} руб.",
                     new Font("Courier New", 12), System.Drawing.Brushes.Black, 0, y);
                 y += 20;
                 e.Graphics.DrawString(
                     $"От {order.StartDate.Date} до {order.EndDate.Date}",
                     new Font("Courier New", 12), System.Drawing.Brushes.Black, 0, y);
                 y += 30;
-                order.State = 1;
+                order.State = AppData.Model.States.Where(x => x.Name == "Готово").FirstOrDefault().ID;
                 AppData.Model.SaveChanges();
             }
         }

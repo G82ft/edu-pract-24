@@ -30,7 +30,7 @@
                 <Label Content="Поиск"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="search" Width="100" TextChanged="Search"/>
-                    <Button Content="🔍" Click="Button_Click"/>
+                    <Button x:Name="edit" Content="edit" Click="Toedit"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
@@ -40,7 +40,10 @@
                 <Button x:Name="add" Content="Добавить" Click="Add" HorizontalAlignment="Center"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                <Button x:Name="edit" Content="Редактировать пользователей" Click="EditUsers" HorizontalAlignment="Center"/>
+                <Button x:Name="editUsers" Content="Редактировать пользователей" Click="EditUsers" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <Button x:Name="editOrders" Content="Редактировать заказы" Click="EditOrders" HorizontalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">

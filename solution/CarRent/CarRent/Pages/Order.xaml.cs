@@ -26,7 +26,15 @@ namespace CarRent.Pages
         public Order(CarRent.Orders order)
         {
             InitializeComponent();
+
+            if (AppData.CurrentUser.Role < 2)
+            {
+                stateSP.Visibility = Visibility.Collapsed;
+            }
+
             orders = order;
+            state.ItemsSource = AppData.Model.States.Select(x => x.Name).ToList();
+            state.SelectedItem = orders.States.Name;
             DataContext = orders;
         }
 
@@ -50,15 +58,27 @@ namespace CarRent.Pages
 
         private void Cancel(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("Отменить заказ?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.No)
+            {
+                return;
+            }
+
             AppData.Model.Orders.Remove(orders);
             AppData.Model.SaveChanges();
-            AppData.MainFrame.GoBack();
+            AppData.MainFrame.Navigate(new Orders());
         }
 
         public static bool CheckDateFormat(string date, out DateTime result, string format = "M/dd/yyyy hh:mm:ss tt")
         {
             return DateTime.TryParseExact(date, format, new CultureInfo("en-US"),
                                  DateTimeStyles.None, out result);
+        }
+
+        private void ChangeState(object sender, SelectionChangedEventArgs e)
+        {
+            if (!IsInitialized) return;
+
+            orders.State = AppData.Model.States.Where(x => x.Name == state.SelectedItem).FirstOrDefault().ID;
         }
     }
 }

@@ -18,7 +18,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="5" Margin="5" Padding="5" HorizontalAlignment="Stretch">
-                            <StackPanel MouseLeftButtonUp="RemoveOrder">
+                            <StackPanel MouseLeftButtonUp="OrderClick">
                                 <TextBlock Text="{Binding ID}" Visibility="Collapsed"/>
                                 <TextBlock Text="{Binding Cars.ID}" Visibility="Collapsed"/>
                                 <StackPanel>
@@ -37,17 +37,21 @@
                                         <StackPanel>
                                             <Label Content="От"/>
                                             <Label Content="{Binding StartDate}"/>
+                                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                                <Label Content="Состояние:"/>
+                                                <Label Content="{Binding States.Name}"/>
+                                            </StackPanel>
                                         </StackPanel>
 
                                         <StackPanel HorizontalAlignment="Right">
                                             <Label Content="До"/>
                                             <Label Content="{Binding EndDate}"/>
+                                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                                <Label Content="Итого:"/>
+                                                <Label Content="{Binding TotalCost}"/>
+                                            </StackPanel>
                                         </StackPanel>
                                     </DockPanel>
-                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                                        <Label Content="Итого:"/>
-                                        <Label Content="{Binding TotalCost}"/>
-                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
@@ -56,8 +60,8 @@
             </ListView>
         </ScrollViewer>
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch">
-            <Button Content="PDF" Click="ToPDF" Width="200"/>
-            <Button Content="Назад" Click="Back" Width="200" HorizontalAlignment="Right"/>
+            <Button Content="Назад" Click="Back" Width="200"/>
+            <Button x:Name="pdf" Content="PDF" Click="ToPDF" Width="200" HorizontalAlignment="Right"/>
         </DockPanel>
     </Grid>
 </Page>

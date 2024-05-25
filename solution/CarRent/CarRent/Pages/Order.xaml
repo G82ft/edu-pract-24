@@ -24,14 +24,18 @@
             <DockPanel HorizontalAlignment="Stretch">
                 <StackPanel>
                     <Label Content="От"/>
-                    <TextBox x:Name="start" Text="{Binding StartDate, ValidatesOnExceptions=True, NotifyOnValidationError=True}" Width="100"/>
+                    <TextBox x:Name="start" Text="{Binding StartDate, ValidatesOnExceptions=True, NotifyOnValidationError=True}" Width="150"/>
                 </StackPanel>
 
                 <StackPanel HorizontalAlignment="Right">
                     <Label Content="До"/>
-                    <TextBox x:Name="end" Text="{Binding EndDate, ValidatesOnExceptions=True, NotifyOnValidationError=True}" Width="100"/>
+                    <TextBox x:Name="end" Text="{Binding EndDate, ValidatesOnExceptions=True, NotifyOnValidationError=True}" Width="150"/>
                 </StackPanel>
             </DockPanel>
+            <StackPanel x:Name="stateSP" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Состояние:"/>
+                <ComboBox x:Name="state" SelectionChanged="ChangeState" Width="150"/>
+            </StackPanel>
             <DockPanel HorizontalAlignment="Right">
                 <Button Content="Отмена" Click="Cancel" Width="100"/>
                 <Button Content="Сохранить" Click="Save" Width="100"/>
