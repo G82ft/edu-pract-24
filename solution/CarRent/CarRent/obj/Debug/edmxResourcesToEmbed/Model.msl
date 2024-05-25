@@ -18,18 +18,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="CarRentModel.Orders">
-        <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Car" ColumnName="Car" />
-          <ScalarProperty Name="User" ColumnName="User" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-          <ScalarProperty Name="State" ColumnName="State" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Roles">
       <EntityTypeMapping TypeName="CarRentModel.Roles">
         <MappingFragment StoreEntitySet="Roles">
@@ -56,6 +44,26 @@
           <ScalarProperty Name="Mileage" ColumnName="Mileage" />
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="CarRentModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="Car" ColumnName="Car" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="CarRentModel.States">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

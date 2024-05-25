@@ -18,19 +18,6 @@
     <NavigationProperty Name="Manufacturers" Relationship="Self.FK_Models_Manufacturers" FromRole="Models" ToRole="Manufacturers" />
     <NavigationProperty Name="Cars" Relationship="CarRentModel.FK_Cars_Models" FromRole="Models" ToRole="Cars" />
   </EntityType>
-  <EntityType Name="Orders">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Car" Type="Int32" Nullable="false" />
-    <Property Name="User" Type="Int32" Nullable="false" />
-    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="State" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Users" Relationship="Self.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
-    <NavigationProperty Name="Cars" Relationship="CarRentModel.FK_Orders_Cars" FromRole="Orders" ToRole="Cars" />
-  </EntityType>
   <EntityType Name="Roles">
     <Key>
       <PropertyRef Name="ID" />
@@ -47,8 +34,8 @@
     <Property Name="Login" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="Role" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Users" FromRole="Users" ToRole="Orders" />
     <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="Orders" Relationship="CarRentModel.FK_Orders_Users" FromRole="Users" ToRole="Orders" />
   </EntityType>
   <Association Name="FK_Models_Manufacturers">
     <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="1" />
@@ -59,18 +46,6 @@
       </Principal>
       <Dependent Role="Models">
         <PropertyRef Name="Manufacturer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_Users">
-    <End Role="Users" Type="Self.Users" Multiplicity="1" />
-    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="User" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -89,16 +64,11 @@
   <EntityContainer Name="CarRentEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" />
     <EntitySet Name="Models" EntityType="Self.Models" />
-    <EntitySet Name="Orders" EntityType="Self.Orders" />
     <EntitySet Name="Roles" EntityType="Self.Roles" />
     <EntitySet Name="Users" EntityType="Self.Users" />
     <AssociationSet Name="FK_Models_Manufacturers" Association="Self.FK_Models_Manufacturers">
       <End Role="Manufacturers" EntitySet="Manufacturers" />
       <End Role="Models" EntitySet="Models" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_Users" Association="Self.FK_Orders_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
       <End Role="Roles" EntitySet="Roles" />
@@ -109,8 +79,14 @@
       <End Role="Models" EntitySet="Models" />
       <End Role="Cars" EntitySet="Cars" />
     </AssociationSet>
+    <EntitySet Name="Orders" EntityType="CarRentModel.Orders" />
+    <EntitySet Name="States" EntityType="CarRentModel.States" />
     <AssociationSet Name="FK_Orders_Cars" Association="CarRentModel.FK_Orders_Cars">
       <End Role="Cars" EntitySet="Cars" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Users" Association="CarRentModel.FK_Orders_Users">
+      <End Role="Users" EntitySet="Users" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
   </EntityContainer>
@@ -139,6 +115,26 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Car" Type="Int32" Nullable="false" />
+    <Property Name="User" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cars" Relationship="CarRentModel.FK_Orders_Cars" FromRole="Orders" ToRole="Cars" />
+    <NavigationProperty Name="Users" Relationship="CarRentModel.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="States">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
   <Association Name="FK_Orders_Cars">
     <End Type="CarRentModel.Cars" Role="Cars" Multiplicity="1" />
     <End Type="CarRentModel.Orders" Role="Orders" Multiplicity="*" />
@@ -148,6 +144,18 @@
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="Car" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Users">
+    <End Type="CarRentModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="CarRentModel.Orders" Role="Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="User" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

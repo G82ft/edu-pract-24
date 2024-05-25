@@ -34,7 +34,8 @@ namespace CarRent.Pages
                 "Models",
                 "Orders",
                 "Roles",
-                "Users"
+                "Users",
+                "States"
             };
             DataContext = this;
             InitializeComponent();
@@ -75,12 +76,16 @@ namespace CarRent.Pages
                     AppData.Model.Users.Load();
                     dataGrid.ItemsSource = AppData.Model.Users.Local;
                     break;
+                case "States":
+                    AppData.Model.States.Load();
+                    dataGrid.ItemsSource = AppData.Model.States.Local;
+                    break;
             }
         }
 
         private void GeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            List<Type> table_types = new List<Type>()
+            List<Type> forbidden = new List<Type>()
             {
                 typeof(Cars),
                 typeof(Manufacturers),
@@ -89,7 +94,7 @@ namespace CarRent.Pages
                 typeof(Roles),
                 typeof(Users)
             };
-            foreach (Type type in table_types)
+            foreach (Type type in forbidden)
             {
                 if (type == e.PropertyType)
                 {

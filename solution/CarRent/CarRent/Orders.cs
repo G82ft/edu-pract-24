@@ -20,16 +20,9 @@ namespace CarRent
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
         public int State { get; set; }
-
-        public decimal TotalCost
-        {
-            get
-            {
-                return Cars.Cost * ((int)(EndDate - StartDate).TotalDays);
-            }
-        }
     
-        public virtual Users Users { get; set; }
         public virtual Cars Cars { get; set; }
+        public virtual States States { get; set; }
+        public virtual Users Users { get; set; }
     }
 }
