@@ -64,8 +64,8 @@
             </ListView>
         </ScrollViewer>
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch">
-            <Button Content="Назад" Click="Back" Width="200"/>
-            <Button x:Name="pdf" Content="PDF" Click="ToPDF" Width="200" HorizontalAlignment="Right"/>
+            <Button Content="Назад" Click="Back" Width="200" Background="Red"/>
+            <Button x:Name="pdf" Content="PDF" Click="ToPDF" Width="200" HorizontalAlignment="Right" Background="LightGreen"/>
         </DockPanel>
     </Grid>
 </Page>

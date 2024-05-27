@@ -16,7 +16,7 @@
             <PasswordBox x:Name="pwd" Width="200"/>
             <StackPanel Orientation="Horizontal">
                 <Button Content="Регистрация" Width="125" Click="ToSignUp"/>
-                <Button Content="Войти" Width="75" Click="SignIn"/>
+                <Button Content="Войти" Width="75" Click="SignIn" Background="LightGreen"/>
             </StackPanel>
         </StackPanel>
     </Grid>

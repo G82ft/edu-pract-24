@@ -37,8 +37,8 @@
                 <ComboBox x:Name="state" SelectionChanged="ChangeState" Width="150"/>
             </StackPanel>
             <DockPanel HorizontalAlignment="Right">
-                <Button Content="Отмена" Click="Cancel" Width="100"/>
-                <Button Content="Сохранить" Click="Save" Width="100"/>
+                <Button Content="Отмена" Click="Cancel" Width="100" Background="Red"/>
+                <Button Content="Сохранить" Click="Save" Width="100" Background="LightGreen"/>
             </DockPanel>
         </StackPanel>
     </Grid>

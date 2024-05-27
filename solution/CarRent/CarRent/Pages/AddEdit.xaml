@@ -44,8 +44,8 @@
                     <TextBox x:Name="mileage" Text="{Binding car.Mileage}"/>
                 </StackPanel>
                 <DockPanel>
-                    <Button Content="Удалить" Click="Delete" Width="100"/>
-                    <Button Content="Сохранить" Click="Save"/>
+                    <Button Content="Удалить" Click="Delete" Width="100" Background="Red"/>
+                    <Button Content="Сохранить" Click="Save" Background="LightGreen"/>
                 </DockPanel>
             </StackPanel>
         </StackPanel>

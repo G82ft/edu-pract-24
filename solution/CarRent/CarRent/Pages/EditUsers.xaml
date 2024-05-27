@@ -30,14 +30,14 @@
                                 <ComboBoxItem Content="User"/>
                                 <ComboBoxItem Content="Admin"/>
                             </ComboBox>
-                            <Button Content="X" Click="Delete"/>
+                            <Button Content="X" Click="Delete" Background="Red"/>
                         </DockPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
         <StackPanel Grid.Row="1">
-            <Button Content="Сохранить" Click="Save"/>
+            <Button Content="Сохранить" Click="Save" Background="LightGreen"/>
         </StackPanel>
     </Grid>
 </Page>
