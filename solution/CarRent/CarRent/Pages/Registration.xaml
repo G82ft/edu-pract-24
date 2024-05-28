@@ -18,6 +18,11 @@
             <TextBox x:Name="login" Width="200" Text="{Binding Login}"/>
             <Label Content="Пароль"/>
             <TextBox x:Name="pwd" Width="200" Text="{Binding Password}"/>
+            <ComboBox x:Name="role" Width="200" SelectionChanged="ChangeRole" Visibility="Collapsed">
+                <ComboBoxItem Content="User"/>
+                <ComboBoxItem Content="Manager"/>
+                <ComboBoxItem Content="Admin"/>
+            </ComboBox>
             <StackPanel Orientation="Horizontal">
                 <Button Content="Вход" Width="75" Click="ToSignIn"/>
                 <Button Content="Зарегестрироваться" Width="125" Click="SignUp" Background="LightGreen"/>

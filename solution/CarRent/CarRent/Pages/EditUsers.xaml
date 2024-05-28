@@ -24,13 +24,14 @@
                     <DataTemplate>
                         <DockPanel HorizontalAlignment="Stretch">
                             <TextBlock Text="{Binding ID}" Visibility="Collapsed"/>
-                            <TextBox Text="{Binding Login}"/>
-                            <TextBox Text="{Binding Password}"/>
-                            <ComboBox SelectionChanged="ChangeRole">
+                            <TextBox Text="{Binding Login}" Width="175"/>
+                            <TextBox Text="{Binding Password}" Width="175"/>
+                            <ComboBox SelectionChanged="ChangeRole" Width="175">
                                 <ComboBoxItem Content="User"/>
+                                <ComboBoxItem Content="Manager"/>
                                 <ComboBoxItem Content="Admin"/>
                             </ComboBox>
-                            <Button Content="X" Click="Delete" Background="Red"/>
+                            <Button Content="X" Click="Delete" Background="Red" Foreground="White" Width="50" HorizontalAlignment="Right"/>
                         </DockPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

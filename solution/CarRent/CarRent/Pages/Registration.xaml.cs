@@ -18,9 +18,23 @@ namespace CarRent.Pages
 {
     public partial class Registration : Page
     {
-        public Registration()
+        private Users _user;
+        public Registration(Users user = null)
         {
+            if (user  == null)
+            {
+                _user = new Users()
+                {
+                    Login = "",
+                    Password = "",
+                    Role = 1
+                };
+            }
             InitializeComponent();
+            
+            DataContext = _user;
+            role.Text = AppData.Model.Roles.Where(x => x.ID == _user.Role).FirstOrDefault().Name;
+
         }
         private void SignUp(object sender, RoutedEventArgs e)
         {
@@ -31,14 +45,8 @@ namespace CarRent.Pages
                 return;
             }
             string password = pwd.Text;
-            Users user = new Users()
-            {
-                Login = loginTxt,
-                Password = password,
-                Role = 1
-            };
             AppData.Model.Users.Add(
-                user
+                _user
             );
             AppData.Model.SaveChanges();
             MessageBox.Show("Регистрация прошла успешно!");
@@ -78,6 +86,12 @@ namespace CarRent.Pages
             }
 
             return true;
+        }
+
+        private void ChangeRole(object sender, SelectionChangedEventArgs e)
+        {
+            string roleName = (role.SelectedItem as ComboBoxItem).Content.ToString();
+            _user.Role = AppData.Model.Roles.Where(x => x.Name == roleName).Select(x => x.ID).FirstOrDefault();
         }
 
         private void ToSignIn(object sender, RoutedEventArgs e)
