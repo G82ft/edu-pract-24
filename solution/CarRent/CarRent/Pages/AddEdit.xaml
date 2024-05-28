@@ -22,10 +22,13 @@
                         <Setter Property="Width" Value="100"/>
                     </Style>
                 </StackPanel.Resources>
-                <Label Content="{Binding car.ID, StringFormat=ID: {0}}"/>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Manufacturer"/>
-                    <ComboBox ItemsSource="{Binding manufacturers}" SelectionChanged="ComboBox_SelectionChanged" x:Name="mfs"/>
+                    <ComboBox ItemsSource="{Binding manufacturers}" SelectionChanged="ChangeManufacturer" x:Name="mfs"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Image"/>
+                    <ComboBox ItemsSource="{Binding images}" Text="{Binding car.Image}" x:Name="imgs"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Model"/>

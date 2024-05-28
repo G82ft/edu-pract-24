@@ -23,6 +23,13 @@ namespace CarRent.Pages
         public List<string> manufacturers { get; set; }
         public List<string> models { get; set; }
         public Cars car { get; set; }
+        public List<string> images { get; set; } = new List<string>()
+        {
+            "audi.jpg",
+            "bmw.jpg",
+            "ford.jpg",
+            "ford150.jpg"
+        };
         public AddEdit(Cars car)
         {
             manufacturers = AppData.Model.Manufacturers.Select(x => x.Name).ToList();
@@ -43,9 +50,6 @@ namespace CarRent.Pages
 
         private void Save(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine(car.Mileage.ToString());
-            Console.WriteLine(mileage.Text);
-            Console.WriteLine(car.Mileage.ToString() != mileage.Text);
             if (car.Number != number.Text
                 || car.Cost.ToString().Replace(',', '.') != cost.Text
                 || car.Mileage.ToString() != mileage.Text)
@@ -55,15 +59,17 @@ namespace CarRent.Pages
             }
             car.Model = AppData.Model.Models.Where(x => x.Name == mdls.SelectedItem).Select(x => x.ID).FirstOrDefault();
             AppData.Model.SaveChanges();
-            AppData.MainFrame.GoBack();
+            AppData.MainFrame.Navigate(new View());
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ChangeManufacturer(object sender, SelectionChangedEventArgs e)
         {
             if (!IsInitialized) return;
 
             mdls.ItemsSource = AppData.Model.Models.Where(x => x.Manufacturers.Name == mfs.SelectedItem).Select(x => x.Name).ToList();
             mdls.SelectedIndex = 0;
+            string mf = mfs.SelectedItem as string;
+            car.Models.Manufacturer = AppData.Model.Manufacturers.Where(x => x.Name == mf).FirstOrDefault().ID;
         }
 
         private void Delete(object sender, RoutedEventArgs e)

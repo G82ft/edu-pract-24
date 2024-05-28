@@ -28,10 +28,10 @@ namespace CarRent.Pages
             if (AppData.CurrentUser.Role < 3)
             {
                 add.Visibility = Visibility.Collapsed;
-                edit.Visibility = Visibility.Collapsed;
+                //edit.Visibility = Visibility.Collapsed;
                 editUsers.Visibility = Visibility.Collapsed;
             }
-            else if (AppData.CurrentUser.Role < 2)
+            if (AppData.CurrentUser.Role < 2)
             {
                 editOrders.Visibility = Visibility.Collapsed;
             }
@@ -91,12 +91,10 @@ namespace CarRent.Pages
                 Car = ID,
                 User = AppData.CurrentUser.ID,
                 StartDate = DateTime.Now.Date,
-                EndDate = DateTime.Now.Date.AddDays(1),
+                EndDate = DateTime.Now.AddDays(1).Date,
                 State = AppData.Model.States.Where(x => x.Name == "Подготовка").FirstOrDefault().ID,
             };
-            AppData.Model.Orders.Add(order);
-            AppData.Model.SaveChanges();
-            AppData.MainFrame.Navigate(new Order(order));
+            AppData.MainFrame.Navigate(new Order(order, true));
         }
 
         private void ToEdit(object sender, RoutedEventArgs e)

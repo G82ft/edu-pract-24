@@ -30,7 +30,7 @@
                 <Label Content="Поиск"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="search" Width="100" TextChanged="Search"/>
-                    <Button x:Name="edit" Content="edit" Click="Toedit"/>
+                    <!--<Button x:Name="edit" Content="edit" Click="Toedit"/>-->
                 </StackPanel>
             </StackPanel>
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
