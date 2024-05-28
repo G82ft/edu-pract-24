@@ -23,9 +23,14 @@ namespace CarRent.Pages
     public partial class Order : Page
     {
         public CarRent.Orders orders { get; set; }
-        public Order(CarRent.Orders order)
+        private bool _newOrder = false;
+        private bool _allUsers = false;
+        public Order(CarRent.Orders order, bool newOrder = false, bool allUsers = false)
         {
             InitializeComponent();
+
+            _newOrder = newOrder;
+            _allUsers = allUsers;
 
             if (AppData.CurrentUser.Role < 2)
             {
@@ -34,7 +39,7 @@ namespace CarRent.Pages
 
             orders = order;
             state.ItemsSource = AppData.Model.States.Select(x => x.Name).ToList();
-            state.SelectedItem = orders.States.Name;
+            state.SelectedItem = AppData.Model.States.Where(x => x.ID == order.State).FirstOrDefault().Name;
             DataContext = orders;
         }
 
@@ -52,20 +57,32 @@ namespace CarRent.Pages
                 MessageBox.Show("Конечная дата должна быть после начальной.");
                 return;
             }
+
+            if (_newOrder)
+            {
+                AppData.Model.Orders.Add(orders);
+            }
             AppData.Model.SaveChanges();
             AppData.MainFrame.Navigate(new Orders());
         }
 
         private void Cancel(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Отменить заказ?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.No)
+            if (!_newOrder && MessageBox.Show("Отменить заказ?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.No)
             {
                 return;
             }
-
-            AppData.Model.Orders.Remove(orders);
-            AppData.Model.SaveChanges();
-            AppData.MainFrame.Navigate(new Orders());
+            
+            if (_newOrder)
+            {
+                AppData.MainFrame.Navigate(new View());
+            }
+            else
+            {
+                AppData.Model.Orders.Remove(orders);
+                AppData.Model.SaveChanges();
+                AppData.MainFrame.Navigate(new Orders(_allUsers));
+            }
         }
 
         public static bool CheckDateFormat(string date, out DateTime result, string format = "M/dd/yyyy hh:mm:ss tt")

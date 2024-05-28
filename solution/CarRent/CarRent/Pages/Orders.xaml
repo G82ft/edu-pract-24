@@ -36,7 +36,7 @@
                                     <DockPanel HorizontalAlignment="Stretch">
                                         <StackPanel>
                                             <Label Content="От"/>
-                                            <Label Content="{Binding StartDate}"/>
+                                            <Label Content="{Binding StartDate.Date}"/>
                                             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                                                 <Label Content="Состояние:"/>
                                                 <Label Content="{Binding States.Name}"/>
@@ -45,7 +45,7 @@
 
                                         <StackPanel HorizontalAlignment="Right">
                                             <Label Content="До" HorizontalAlignment="Right"/>
-                                            <Label Content="{Binding EndDate}" HorizontalAlignment="Right"/>
+                                            <Label Content="{Binding EndDate.Date}" HorizontalAlignment="Right"/>
                                             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                                                 <Label Content="Итого:"/>
                                                 <Label Content="{Binding TotalCost}"/>
