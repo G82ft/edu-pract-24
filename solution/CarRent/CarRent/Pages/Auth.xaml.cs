@@ -32,7 +32,7 @@ namespace CarRent.Pages
             catch (SqlException)
             {
                 MessageBox.Show("кажется кто-то недостаточный интеллектом забыл подключить бд");
-                System.Windows.Application.Current.Shutdown();
+                Application.Current.Shutdown();
             }
             catch (InvalidOperationException)
             {

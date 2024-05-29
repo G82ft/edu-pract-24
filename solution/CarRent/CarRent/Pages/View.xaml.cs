@@ -94,6 +94,8 @@ namespace CarRent.Pages
                 EndDate = DateTime.Now.AddDays(1).Date,
                 State = AppData.Model.States.Where(x => x.Name == "Подготовка").FirstOrDefault().ID,
             };
+            AppData.Model.Orders.Add(order);
+            AppData.Model.SaveChanges();
             AppData.MainFrame.Navigate(new Order(order, true));
         }
 

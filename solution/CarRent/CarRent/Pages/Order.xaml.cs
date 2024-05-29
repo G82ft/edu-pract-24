@@ -72,15 +72,16 @@ namespace CarRent.Pages
             {
                 return;
             }
-            
+
+            AppData.Model.Orders.Remove(orders);
+            AppData.Model.SaveChanges();
+
             if (_newOrder)
             {
                 AppData.MainFrame.Navigate(new View());
             }
             else
             {
-                AppData.Model.Orders.Remove(orders);
-                AppData.Model.SaveChanges();
                 AppData.MainFrame.Navigate(new Orders(_allUsers));
             }
         }

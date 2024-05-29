@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarRent"
         mc:Ignorable="d"
+        
         Title="Прокат автомобилей" Height="450" Width="800" MinHeight="500" MinWidth="600">
     <Grid>
-        <Frame x:Name="MainFrame"></Frame>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
