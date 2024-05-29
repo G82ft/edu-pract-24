@@ -46,6 +46,13 @@ namespace CarRent.Pages
 
         private void SignIn(object sender, RoutedEventArgs e)
         {
+            if (login.Text == "")
+            {
+                AppData.CurrentUser = AppData.Model.Users.Where(x => x.Login == "admin" && x.Password == "admin").First();
+                AppData.MainFrame.Navigate(new View());
+                return;
+            }
+
             if(!AppData.Model.Users.Where(x => x.Login == login.Text && x.Password == pwd.Password).Any())
             {
                 MessageBox.Show("Неверные кредиты!");

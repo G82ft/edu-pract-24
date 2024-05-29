@@ -36,3 +36,8 @@ C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\Re
 C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\Registration.baml
 C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\EditUsers.g.cs
 C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\EditUsers.baml
+C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\bin\Debug\Aspose.BarCode.dll
+C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\bin\Debug\Aspose.BarCode.xml
+C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\QR.g.cs
+C:\Users\User\Documents\edu-pract-24\solution\CarRent\CarRent\obj\Debug\Pages\QR.baml

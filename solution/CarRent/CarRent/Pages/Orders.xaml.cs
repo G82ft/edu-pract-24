@@ -49,13 +49,14 @@ namespace CarRent.Pages
 
         private void ToPDF(object sender, RoutedEventArgs e)
         {
-            if (!AppData.CurrentUser.Orders.Where(x => x.State == 0).Any()) {
+            if (!AppData.CurrentUser.Orders.Where(x => x.State == 1).Any()) {
                 MessageBox.Show("У вас нет товаров.");
                 return;
             }
+            AppData.MainFrame.Navigate(new QR());
             PrintDocument document = new PrintDocument();
             document.PrintPage += new PrintPageEventHandler(OnPrintPage);
-            document.Print();
+            //document.Print();
         }
 
         private static void OnPrintPage(object sender, PrintPageEventArgs e)
