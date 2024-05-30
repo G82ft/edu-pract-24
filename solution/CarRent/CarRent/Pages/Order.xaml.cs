@@ -37,6 +37,8 @@ namespace CarRent.Pages
                 stateSP.Visibility = Visibility.Collapsed;
             }
 
+            delete.Visibility = _newOrder ? Visibility.Collapsed : Visibility.Visible;
+
             orders = order;
             state.ItemsSource = AppData.Model.States.Select(x => x.Name).ToList();
             state.SelectedItem = AppData.Model.States.Where(x => x.ID == order.State).FirstOrDefault().Name;
@@ -66,24 +68,16 @@ namespace CarRent.Pages
             AppData.MainFrame.Navigate(new Orders());
         }
 
-        private void Cancel(object sender, RoutedEventArgs e)
+        private void Delete(object sender, RoutedEventArgs e)
         {
-            if (!_newOrder && MessageBox.Show("Отменить заказ?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.No)
+            if (MessageBox.Show("Отменить заказ?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.No)
             {
                 return;
             }
 
             AppData.Model.Orders.Remove(orders);
             AppData.Model.SaveChanges();
-
-            if (_newOrder)
-            {
-                AppData.MainFrame.Navigate(new View());
-            }
-            else
-            {
-                AppData.MainFrame.Navigate(new Orders(_allUsers));
-            }
+            AppData.MainFrame.Navigate(new Orders(_allUsers));
         }
 
         public static bool CheckDateFormat(string date, out DateTime result, string format = "M/dd/yyyy hh:mm:ss tt")
@@ -97,6 +91,20 @@ namespace CarRent.Pages
             if (!IsInitialized) return;
 
             orders.State = AppData.Model.States.Where(x => x.Name == state.SelectedItem).FirstOrDefault().ID;
+        }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            if (_newOrder)
+            {
+                AppData.Model.Orders.Remove(orders);
+                AppData.Model.SaveChanges();
+                AppData.MainFrame.Navigate(new View());
+            }
+            else
+            {
+                AppData.MainFrame.Navigate(new Orders(_allUsers));
+            }
         }
     }
 }

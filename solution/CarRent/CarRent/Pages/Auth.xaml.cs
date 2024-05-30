@@ -31,7 +31,7 @@ namespace CarRent.Pages
             }
             catch (SqlException)
             {
-                MessageBox.Show("кажется кто-то недостаточный интеллектом забыл подключить бд");
+                MessageBox.Show("Отсутствует подключение к БД!");
                 Application.Current.Shutdown();
             }
             catch (InvalidOperationException)
@@ -55,7 +55,7 @@ namespace CarRent.Pages
 
             if(!AppData.Model.Users.Where(x => x.Login == login.Text && x.Password == pwd.Password).Any())
             {
-                MessageBox.Show("Неверные кредиты!");
+                MessageBox.Show("Неверный логин или пароль.");
                 return;
             }
             AppData.CurrentUser = AppData.Model.Users.Where(x => x.Login == login.Text && x.Password == pwd.Password).First();
