@@ -40,7 +40,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Cost"/>
-                    <TextBox x:Name="cost" Text="{Binding car.Cost}"/>
+                    <TextBox x:Name="cost" Text="{Binding car.Cost}" PreviewTextInput="ValidateCost"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Mileage"/>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,6 +47,8 @@ namespace CarRent.Pages
             mdls.SelectedItem = car.Models.Name;
 
             mdls.ItemsSource = AppData.Model.Models.Where(x => x.Manufacturers.Name == mfs.SelectedItem).Select(x => x.Name).ToList();
+
+            mileage.PreviewTextInput += AppData.onlyIntPositive;
         }
 
         private void Save(object sender, RoutedEventArgs e)
@@ -86,9 +89,14 @@ namespace CarRent.Pages
             }
             catch (InvalidOperationException)
             {
-                MessageBox.Show("Невозможно удалить машину, так как есть незавершённый заказ.");
+                MessageBox.Show("Невозможно удалить машину, так как есть заказ с ней.");
             }
             AppData.MainFrame.GoBack();
+        }
+
+        private void ValidateCost(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex(@"^[0-9]{1,9}\.[0-9]{0,2}$").IsMatch(e.Text);
         }
     }
 }

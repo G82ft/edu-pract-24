@@ -34,6 +34,7 @@ namespace CarRent.Pages
             
             DataContext = _user;
             role.Text = AppData.Model.Roles.Where(x => x.ID == _user.Role).FirstOrDefault().Name;
+            phone.PreviewTextInput += AppData.onlyIntPositive;
 
         }
         private void SignUp(object sender, RoutedEventArgs e)
