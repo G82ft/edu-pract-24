@@ -22,24 +22,32 @@ namespace CarRent.Pages
     /// </summary>
     public partial class QR : Page
     {
+        private static Random random = new Random();
+        private static int id = 0;
         public QR()
         {
             InitializeComponent();
 
             BitmapImage bitmap = new BitmapImage();
-            BarcodeGenerator gen = new BarcodeGenerator(EncodeTypes.QR, "https://youtube.com?v=dQw4w9WgXcQ");
+            string randString = new string(Enumerable.Repeat("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 11)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+            if (random.Next(100) > 80)
+            {
+                randString = "dQw4w9WgXcQ";
+            }
+            BarcodeGenerator gen = new BarcodeGenerator(EncodeTypes.QR, $"https://youtube.com/watch?v={randString}");
             gen.Parameters.Barcode.XDimension.Pixels = 34;
-            gen.Save(@"..\..\qr.png", BarCodeImageFormat.Png);
+            gen.Save($@"..\..\QR\qr{id}.png", BarCodeImageFormat.Png);
 
             bitmap.BeginInit();
             Console.WriteLine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName);
-            Uri uri = new Uri($@"{Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName}\qr.png", UriKind.Absolute);
+            Uri uri = new Uri($@"{Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName}\QR\qr{id}.png", UriKind.Absolute);
             bitmap.UriSource = uri;
             bitmap.EndInit();
 
             img.Source = bitmap;
+            id++;
         }
-
         private void Back(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.GoBack();
