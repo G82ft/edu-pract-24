@@ -11,9 +11,9 @@
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Label Content="Телефон"/>
-            <TextBox x:Name="phone" Width="200"/>
+            <TextBox x:Name="phone" Width="200" Text="{Binding Phone}"/>
             <Label Content="Email"/>
-            <TextBox x:Name="email" Width="200"/>
+            <TextBox x:Name="email" Width="200" Text="{Binding Email}"/>
             <Label Content="Логин"/>
             <TextBox x:Name="login" Width="200" Text="{Binding Login}"/>
             <Label Content="Пароль"/>
@@ -24,8 +24,8 @@
                 <ComboBoxItem Content="Admin"/>
             </ComboBox>
             <StackPanel Orientation="Horizontal">
-                <Button Content="Вход" Width="75" Click="ToSignIn"/>
-                <Button Content="Зарегестрироваться" Width="125" Click="SignUp" Background="LightGreen"/>
+                <Button x:Name="back" Content="Отмена" Width="100" Click="Back"/>
+                <Button Content="Ok" Width="100" Click="SignUp" Background="LightGreen"/>
             </StackPanel>
         </StackPanel>
     </Grid>

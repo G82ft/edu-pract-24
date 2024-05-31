@@ -37,18 +37,6 @@ namespace CarRent.Pages
             AppData.MainFrame.Navigate(new View());
         }
 
-        private void ChangeRole(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox cb = sender as ComboBox;
-            int ID = int.Parse(((cb.Parent as DockPanel).Children[0] as TextBlock).Text);
-            Users user = AppData.Model.Users.Where(x => x.ID == ID).FirstOrDefault();
-            string roleName = (cb.SelectedItem as ComboBoxItem).Content.ToString();
-            Console.WriteLine(roleName);
-            int role = AppData.Model.Roles.Where(x => x.Name == roleName).Select(x => x.ID).FirstOrDefault();
-            Console.WriteLine(role);
-            user.Role = role;
-        }
-
         private void Delete(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Удалить пользователя?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.No)
@@ -63,42 +51,13 @@ namespace CarRent.Pages
                 AppData.MainFrame.GoBack();
                 AppData.MainFrame.Navigate(new EditUsers());
         }
-        public static List<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+
+        private void ToEdit(object sender, MouseButtonEventArgs e)
         {
-            List<T> list = new List<T>();
-            if (depObj != null)
-            {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-                {
-                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                    if (child != null && child is T)
-                    {
-                        list.Add((T)child);
-                    }
+            int ID = int.Parse(((sender as DockPanel).Children[0] as TextBlock).Text);
+            Users user = AppData.Model.Users.Where(x => x.ID == ID).FirstOrDefault();
 
-                    List<T> childItems = FindVisualChildren<T>(child);
-                    if (childItems != null && childItems.Count() > 0)
-                    {
-                        foreach (var item in childItems)
-                        {
-                            list.Add(item);
-                        }
-                    }
-                }
-            }
-            return list;
-        }
-
-        private void ScrollViewer_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (rendered) return;
-            foreach (var child in FindVisualChildren<ComboBox>(listView))
-            {
-                int id = int.Parse(((child.Parent as DockPanel).Children[0] as TextBlock).Text);
-
-                child.Text = AppData.Model.Users.Where(x => x.ID == id).FirstOrDefault().Roles.Name;
-            }
-            rendered = true;
+            AppData.MainFrame.Navigate(new Registration(user));
         }
     }
 }

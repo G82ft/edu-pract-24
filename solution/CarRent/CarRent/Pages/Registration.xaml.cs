@@ -21,7 +21,8 @@ namespace CarRent.Pages
         private Users _user;
         public Registration(Users user = null)
         {
-            if (user  == null)
+            InitializeComponent();
+            if (user == null)
             {
                 _user = new Users()
                 {
@@ -29,9 +30,14 @@ namespace CarRent.Pages
                     Password = "",
                     Role = 1
                 };
+                back.Content = "Вход";
             }
-            InitializeComponent();
-            
+            else
+            {
+                _user = user;
+                role.Visibility = Visibility.Visible;
+            }
+
             DataContext = _user;
             role.Text = AppData.Model.Roles.Where(x => x.ID == _user.Role).FirstOrDefault().Name;
             phone.PreviewTextInput += AppData.onlyIntPositive;
@@ -39,13 +45,16 @@ namespace CarRent.Pages
         }
         private void SignUp(object sender, RoutedEventArgs e)
         {
-            string loginTxt = login.Text;
-
             if (!Validate())
             {
                 return;
             }
-            string password = pwd.Text;
+            if (AppData.CurrentUser != null)
+            {
+                AppData.MainFrame.Navigate(new EditUsers());
+                return;
+            }
+
             AppData.Model.Users.Add(
                 _user
             );
@@ -69,7 +78,7 @@ namespace CarRent.Pages
                 }
             }
 
-            if (AppData.Model.Users.Where(x => x.Login == loginTxt).Any())
+            if (AppData.CurrentUser == null && AppData.Model.Users.Where(x => x.Login == loginTxt).Any())
             {
                 MessageBox.Show("Пользователь с таким логином уже существует!");
                 return false;
@@ -95,9 +104,14 @@ namespace CarRent.Pages
             _user.Role = AppData.Model.Roles.Where(x => x.Name == roleName).Select(x => x.ID).FirstOrDefault();
         }
 
-        private void ToSignIn(object sender, RoutedEventArgs e)
+        private void Back(object sender, RoutedEventArgs e)
         {
-            AppData.MainFrame.Navigate(new Auth());
+            if (AppData.CurrentUser == null)
+            {
+                AppData.MainFrame.Navigate(new Auth());
+                return;
+            }
+            AppData.MainFrame.Navigate(new EditUsers());
         }
     }
 }
