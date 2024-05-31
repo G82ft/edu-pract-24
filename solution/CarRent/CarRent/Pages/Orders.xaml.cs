@@ -22,8 +22,10 @@ namespace CarRent.Pages
     /// </summary>
     public partial class Orders : Page
     {
+        private bool _allUsers;
         public Orders(bool allUsers = false)
         {
+            _allUsers = allUsers;
             InitializeComponent();
             if (!allUsers)
             {
@@ -34,7 +36,6 @@ namespace CarRent.Pages
                 listView.ItemsSource = AppData.Model.Orders.ToList();
                 pdf.Visibility = Visibility.Collapsed;
             }
-            
         }
 
         private void OrderClick(object sender, MouseButtonEventArgs e)
@@ -44,7 +45,7 @@ namespace CarRent.Pages
 
             CarRent.Orders order = AppData.Model.Orders.Where(x => x.ID == ID).First();
 
-            AppData.MainFrame.Navigate(new Order(order));
+            AppData.MainFrame.Navigate(new Order(order, allUsers: _allUsers));
         }
 
         private void ToPDF(object sender, RoutedEventArgs e)

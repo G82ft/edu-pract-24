@@ -52,6 +52,8 @@ namespace CarRent.Pages
             if (!(CheckDateFormat(start.Text, out startDate) & CheckDateFormat(end.Text, out endDate)))
             {
                 MessageBox.Show("Некорректный формат данных!");
+                Console.WriteLine(startDate);
+                Console.WriteLine(endDate);
                 return;
             }
             if (endDate <= startDate)
@@ -80,9 +82,15 @@ namespace CarRent.Pages
             AppData.MainFrame.Navigate(new Orders(_allUsers));
         }
 
-        public static bool CheckDateFormat(string date, out DateTime result, string format = "M/dd/yyyy hh:mm:ss tt")
+        public static bool CheckDateFormat(string date, out DateTime result)
         {
-            return DateTime.TryParseExact(date, format, new CultureInfo("en-US"),
+            return DateTime.TryParseExact(date, "M/d/yyyy hh:mm:ss tt", new CultureInfo("en-US"),
+                                 DateTimeStyles.None, out result)
+                || DateTime.TryParseExact(date, "M/dd/yyyy hh:mm:ss tt", new CultureInfo("en-US"),
+                                 DateTimeStyles.None, out result)
+                || DateTime.TryParseExact(date, "MM/d/yyyy hh:mm:ss tt", new CultureInfo("en-US"),
+                                 DateTimeStyles.None, out result)
+                || DateTime.TryParseExact(date, "MM/dd/yyyy hh:mm:ss tt", new CultureInfo("en-US"),
                                  DateTimeStyles.None, out result);
         }
 
