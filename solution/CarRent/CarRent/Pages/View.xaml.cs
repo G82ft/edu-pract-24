@@ -38,6 +38,7 @@ namespace CarRent.Pages
 
             List<string> mfs = AppData.Model.Manufacturers.Select(x => x.Name).ToList();
             mfs.Insert(0, "*");
+            DataContext = this;
 
             filter.ItemsSource = mfs;
             filter.SelectedIndex = 0;
@@ -70,6 +71,7 @@ namespace CarRent.Pages
             }
 
             listView.ItemsSource = cars.ToList();
+            amount.Text = $"   Найдено: {cars.ToList().Count}";
         }
 
         private void Filter(object sender, SelectionChangedEventArgs e)
@@ -111,7 +113,7 @@ namespace CarRent.Pages
 
         private void ToEdit(object sender, MouseButtonEventArgs e)
         {
-            if (AppData.CurrentUser.Role != 2)
+            if (AppData.CurrentUser.Role != 3)
             {
                 return;
             }
