@@ -24,9 +24,11 @@ namespace CarRent
         public string Login { get; set; }
         public string Password { get; set; }
         public int Role { get; set; }
+        public Nullable<decimal> Phone { get; set; }
+        public string Email { get; set; }
     
-        public virtual Roles Roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
+        public virtual Roles Roles { get; set; }
     }
 }
