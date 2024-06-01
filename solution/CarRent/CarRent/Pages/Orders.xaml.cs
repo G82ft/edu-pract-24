@@ -57,27 +57,36 @@ namespace CarRent.Pages
             AppData.MainFrame.Navigate(new QR());
             PrintDocument document = new PrintDocument();
             document.PrintPage += new PrintPageEventHandler(OnPrintPage);
-            //document.Print();
+            document.Print();
         }
 
         private static void OnPrintPage(object sender, PrintPageEventArgs e)
         {
             float y = 0;
-            foreach (CarRent.Orders order in AppData.CurrentUser.Orders.Where(x => x.State == 0).ToList())
+            decimal total = AppData.CurrentUser.Orders.Where(x => x.State == 1).Select(x => x.TotalCost).Sum();
+            foreach (CarRent.Orders order in AppData.CurrentUser.Orders.Where(x => x.State == 1).ToList())
             {
                 Cars car = order.Cars;
                 Models model = car.Models;
                 e.Graphics.DrawString(
-                    $"{model.Manufacturers.Name} {model.Name} (Номер - {car.Number}): {order.TotalCost} руб.",
+                    $"{model.Manufacturers.Name} {model.Name} (Номер - {car.Number.Trim()})",
                     new Font("Courier New", 12), System.Drawing.Brushes.Black, 0, y);
                 y += 20;
                 e.Graphics.DrawString(
                     $"От {order.StartDate.Date} до {order.EndDate.Date}",
                     new Font("Courier New", 12), System.Drawing.Brushes.Black, 0, y);
+                y += 20;
+                e.Graphics.DrawString(
+                    $"Цена: {order.TotalCost} руб.",
+                    new Font("Courier New", 12), System.Drawing.Brushes.Black, 0, y);
                 y += 30;
                 order.State = AppData.Model.States.Where(x => x.Name == "Готово").FirstOrDefault().ID;
-                AppData.Model.SaveChanges();
             }
+            y += 40;
+            e.Graphics.DrawString(
+                    $"Итого: {total} руб.",
+                    new Font("Courier New", 16), System.Drawing.Brushes.Black, 0, y);
+            AppData.Model.SaveChanges();
         }
 
         private void Back(object sender, RoutedEventArgs e)

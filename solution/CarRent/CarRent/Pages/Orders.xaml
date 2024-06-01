@@ -21,42 +21,52 @@
                             <StackPanel MouseLeftButtonUp="OrderClick">
                                 <TextBlock Text="{Binding ID}" Visibility="Collapsed"/>
                                 <TextBlock Text="{Binding Cars.ID}" Visibility="Collapsed"/>
-                                <StackPanel>
-                                    <DockPanel HorizontalAlignment="Stretch">
-                                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                            <Label Content="{Binding Cars.Models.Manufacturers.Name}" FontWeight="Black" FontSize="16"/>
-                                            <Label Content="{Binding Cars.Models.Name}" FontSize="16"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <Label Content="Номер:"/>
-                                            <Label Content="{Binding Cars.Number}"/>
-                                        </StackPanel>
-                                    </DockPanel>
-                                    <Image Source="{Binding Cars.ImagePath}" Width="100" Height="100" HorizontalAlignment="Left"/>
-                                    <DockPanel HorizontalAlignment="Stretch">
-                                        <StackPanel>
-                                            <Label Content="От"/>
-                                            <Label Content="{Binding StartDate.Date}"/>
-                                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                                                <Label Content="Состояние:"/>
-                                                <Label Content="{Binding States.Name}"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="110"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" Source="{Binding Cars.ImagePath}" Width="100" Height="100" HorizontalAlignment="Left"/>
+                                    <StackPanel Grid.Column="1">
+                                        <DockPanel HorizontalAlignment="Stretch">
+                                            <TextBlock FontWeight="Black" FontSize="16">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{0} {1}">
+                                                        <Binding Path="Cars.Models.Manufacturers.Name"/>
+                                                        <Binding Path="Cars.Models.Name"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <Label Content="Номер:"/>
+                                                <Label Content="{Binding Cars.Number}"/>
                                             </StackPanel>
-                                        </StackPanel>
+                                        </DockPanel>
+                                        <DockPanel HorizontalAlignment="Stretch">
+                                            <StackPanel>
+                                                <Label Content="От"/>
+                                                <Label Content="{Binding StartDate.Date}"/>
+                                                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                                    <Label Content="Состояние:"/>
+                                                    <Label Content="{Binding States.Name}"/>
+                                                </StackPanel>
+                                            </StackPanel>
 
-                                        <StackPanel HorizontalAlignment="Right">
-                                            <Label Content="До" HorizontalAlignment="Right"/>
-                                            <Label Content="{Binding EndDate.Date}" HorizontalAlignment="Right"/>
-                                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                                                <Label Content="Итого:"/>
-                                                <Label Content="{Binding TotalCost}"/>
+                                            <StackPanel HorizontalAlignment="Right">
+                                                <Label Content="До" HorizontalAlignment="Right"/>
+                                                <Label Content="{Binding EndDate.Date}" HorizontalAlignment="Right"/>
+                                                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                                    <Label Content="Итого:"/>
+                                                    <Label Content="{Binding TotalCost}"/>
+                                                </StackPanel>
+                                                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                                    <Label Content="Для пользователя:"/>
+                                                    <Label Content="{Binding Users.Login}"/>
+                                                </StackPanel>
                                             </StackPanel>
-                                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                                                <Label Content="Для пользователя:"/>
-                                                <Label Content="{Binding Users.Login}"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </DockPanel>
-                                </StackPanel>
+                                        </DockPanel>
+                                    </StackPanel>
+                                </Grid>
                             </StackPanel>
                         </Border>
                     </DataTemplate>

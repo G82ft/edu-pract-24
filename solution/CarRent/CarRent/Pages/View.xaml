@@ -61,16 +61,14 @@
                                     </Grid.ColumnDefinitions>
                                     <Image Grid.Column="0" Source="{Binding ImagePath}" Width="100" Height="100" HorizontalAlignment="Left"/>
                                     <StackPanel Grid.Column="1">
-                                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                            <TextBlock FontWeight="Black" FontSize="16">
-                                                <TextBlock.Text>
-                                                    <MultiBinding StringFormat="{}{0} {1}">
-                                                        <Binding Path="Models.Manufacturers.Name"/>
-                                                        <Binding Path="Models.Name"/>
-                                                    </MultiBinding>
-                                                </TextBlock.Text>
-                                            </TextBlock>
-                                        </StackPanel>
+                                        <TextBlock FontWeight="Black" FontSize="16">
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} {1}">
+                                                    <Binding Path="Models.Manufacturers.Name"/>
+                                                    <Binding Path="Models.Name"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
 
                                         
                                         <StackPanel>
