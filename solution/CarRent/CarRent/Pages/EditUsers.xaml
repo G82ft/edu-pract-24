@@ -38,15 +38,19 @@
                             <TextBlock Text="{Binding Roles.Name}" Width="100"/>
                             <TextBox Text="{Binding Phone}" Width="100"/>
                             <TextBox Text="{Binding Email}" Width="100"/>
-                            <TextBlock Text="|                             |" Width="100"/>
                             <Button Content="X" Click="Delete" Background="Red" Foreground="White" Width="50" HorizontalAlignment="Right"/>
                         </DockPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
-        <StackPanel Grid.Row="2">
-            <Button Content="Сохранить" Click="Save" Background="LightGreen"/>
-        </StackPanel>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Отмена" Click="Cancel" Foreground="White" Background="Red"/>
+            <Button Grid.Column="1" Content="Сохранить" Click="Save" Background="LightGreen"/>
+        </Grid>
     </Grid>
 </Page>

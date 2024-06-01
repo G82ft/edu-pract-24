@@ -58,5 +58,11 @@ namespace CarRent.Pages
 
             AppData.MainFrame.Navigate(new Registration(user));
         }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            AppData.Refresh();
+            AppData.MainFrame.Navigate(new View());
+        }
     }
 }
