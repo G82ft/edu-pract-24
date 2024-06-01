@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\carrent\\pages\\view.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|solutionrelative:carrent\\pages\\view.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|c:\\users\\user\\documents\\edu-pract-24\\solution\\carrent\\carrent\\classes\\cars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|solutionrelative:carrent\\classes\\cars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|c:\\users\\user\\documents\\edu-pract-24\\solution\\carrent\\carrent\\cars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|solutionrelative:carrent\\cars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|c:\\users\\user\\documents\\edu-pract-24\\solution\\carrent\\carrent\\appdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|solutionrelative:carrent\\appdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|c:\\users\\user\\documents\\edu-pract-24\\solution\\carrent\\carrent\\pages\\order.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
       "RelativeMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|solutionrelative:carrent\\pages\\order.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
@@ -27,10 +43,6 @@
       "RelativeMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|solutionrelative:carrent\\pages\\qr.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|c:\\users\\user\\documents\\edu-pract-24\\solution\\carrent\\carrent\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|solutionrelative:carrent\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|c:\\users\\user\\documents\\edu-pract-24\\solution\\carrent\\carrent\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|solutionrelative:carrent\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -41,10 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\carrent\\model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
       "RelativeMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|solutionrelative:carrent\\model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\carrent\\pages\\view.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|solutionrelative:carrent\\pages\\view.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0A952236-032C-4534-9F4F-C8CDDB99149A}|CarRent\\CarRent.csproj|C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\carrent\\pages\\editusers.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -82,61 +90,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "AppData.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\AppData.cs",
+              "RelativeDocumentMoniker": "CarRent\\AppData.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\AppData.cs",
+              "RelativeToolTip": "CarRent\\AppData.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T07:55:07.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Order.xaml.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\Order.xaml.cs",
               "RelativeDocumentMoniker": "CarRent\\Pages\\Order.xaml.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\Order.xaml.cs",
               "RelativeToolTip": "CarRent\\Pages\\Order.xaml.cs",
-              "ViewState": "AQIAAD4AAAAAAAAAAAAgwCAAAAAhAAAA",
+              "ViewState": "AQIAACcAAAAAAAAAAAAYwCsAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-31T08:05:38.262Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "CarRent\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\MainWindow.xaml",
-              "RelativeToolTip": "CarRent\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-31T07:52:21.948Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "QR.xaml",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\QR.xaml",
-              "RelativeDocumentMoniker": "CarRent\\Pages\\QR.xaml",
-              "ToolTip": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\QR.xaml",
-              "RelativeToolTip": "CarRent\\Pages\\QR.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-31T07:45:57.882Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "View.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\View.xaml.cs",
-              "RelativeDocumentMoniker": "CarRent\\Pages\\View.xaml.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\View.xaml.cs",
-              "RelativeToolTip": "CarRent\\Pages\\View.xaml.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAmwDcAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T07:04:43.389Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "Registration.xaml",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\Registration.xaml",
               "RelativeDocumentMoniker": "CarRent\\Pages\\Registration.xaml",
@@ -148,7 +132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Orders.xaml",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\Orders.xaml",
               "RelativeDocumentMoniker": "CarRent\\Pages\\Orders.xaml",
@@ -160,7 +144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Orders.xaml.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\Orders.xaml.cs",
               "RelativeDocumentMoniker": "CarRent\\Pages\\Orders.xaml.cs",
@@ -173,7 +157,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
+              "Title": "View.xaml",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\View.xaml",
+              "RelativeDocumentMoniker": "CarRent\\Pages\\View.xaml",
+              "ToolTip": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\View.xaml",
+              "RelativeToolTip": "CarRent\\Pages\\View.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-30T14:36:39.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Cars.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Cars.cs",
+              "RelativeDocumentMoniker": "CarRent\\Cars.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Cars.cs",
+              "RelativeToolTip": "CarRent\\Cars.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T08:59:35.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Cars.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Classes\\Cars.cs",
+              "RelativeDocumentMoniker": "CarRent\\Classes\\Cars.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Classes\\Cars.cs",
+              "RelativeToolTip": "CarRent\\Classes\\Cars.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T08:59:48.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "View.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\View.xaml.cs",
+              "RelativeDocumentMoniker": "CarRent\\Pages\\View.xaml.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\View.xaml.cs",
+              "RelativeToolTip": "CarRent\\Pages\\View.xaml.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAmwDcAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T07:04:43.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\App.xaml",
               "RelativeDocumentMoniker": "CarRent\\App.xaml",
@@ -185,7 +220,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\App.xaml.cs",
               "RelativeDocumentMoniker": "CarRent\\App.xaml.cs",
@@ -199,6 +234,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "QR.xaml",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\QR.xaml",
+              "RelativeDocumentMoniker": "CarRent\\Pages\\QR.xaml",
+              "ToolTip": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\QR.xaml",
+              "RelativeToolTip": "CarRent\\Pages\\QR.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-31T07:45:57.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Model.edmx [Diagram1]",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Model.edmx",
               "RelativeDocumentMoniker": "CarRent\\Model.edmx",
@@ -210,18 +257,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "View.xaml",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\View.xaml",
-              "RelativeDocumentMoniker": "CarRent\\Pages\\View.xaml",
-              "ToolTip": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\View.xaml",
-              "RelativeToolTip": "CarRent\\Pages\\View.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-30T14:36:39.077Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "EditUsers.xaml",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\EditUsers.xaml",
               "RelativeDocumentMoniker": "CarRent\\Pages\\EditUsers.xaml",
@@ -232,7 +268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "Auth.xaml",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\Auth.xaml",
               "RelativeDocumentMoniker": "CarRent\\Pages\\Auth.xaml",
@@ -243,7 +279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "QR.xaml.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\QR.xaml.cs",
               "RelativeDocumentMoniker": "CarRent\\Pages\\QR.xaml.cs",
@@ -256,7 +292,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Auth.xaml.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\Auth.xaml.cs",
               "RelativeDocumentMoniker": "CarRent\\Pages\\Auth.xaml.cs",
@@ -268,7 +304,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "EditUsers.xaml.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\EditUsers.xaml.cs",
               "RelativeDocumentMoniker": "CarRent\\Pages\\EditUsers.xaml.cs",
@@ -280,7 +316,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "Order.xaml",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\Order.xaml",
               "RelativeDocumentMoniker": "CarRent\\Pages\\Order.xaml",
@@ -292,7 +328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "Registration.xaml.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\edu-pract-24\\solution\\CarRent\\CarRent\\Pages\\Registration.xaml.cs",
               "RelativeDocumentMoniker": "CarRent\\Pages\\Registration.xaml.cs",

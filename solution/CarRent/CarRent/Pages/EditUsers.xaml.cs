@@ -22,7 +22,6 @@ namespace CarRent.Pages
     /// </summary>
     public partial class EditUsers : Page
     {
-        private bool rendered = false;
         public EditUsers()
         {
             InitializeComponent();

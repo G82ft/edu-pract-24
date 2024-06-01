@@ -54,26 +54,31 @@
                         <Border BorderBrush="Black" BorderThickness="5" Margin="5" Padding="5" HorizontalAlignment="Stretch">
                             <StackPanel MouseLeftButtonUp="AddOrder" MouseRightButtonUp="ToEdit">
                                 <TextBlock Text="{Binding ID}" Visibility="Collapsed"/>
-                                <StackPanel>
-                                    <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                        <Label Content="{Binding Models.Manufacturers.Name}" FontWeight="Black" FontSize="16"/>
-                                        <Label Content="{Binding Models.Name}" FontSize="16"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="110"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" Source="{Binding ImagePath}" Width="100" Height="100" HorizontalAlignment="Left"/>
+                                    <StackPanel Grid.Column="1">
+                                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                                            <TextBlock FontWeight="Black" FontSize="16">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{0} {1}">
+                                                        <Binding Path="Models.Manufacturers.Name"/>
+                                                        <Binding Path="Models.Name"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </StackPanel>
+
+                                        
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Cost, StringFormat=Цена: {0} руб./день}"/>
+                                            <TextBlock Text="{Binding Mileage, StringFormat=Пробег: {0} км}"/>
+                                        </StackPanel>
                                     </StackPanel>
-
-                                    <Image Source="{Binding ImagePath}" Width="100" Height="100" HorizontalAlignment="Left"/>
-
-                                    <DockPanel HorizontalAlignment="Stretch">
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="{Binding Cost}"/>
-                                            <Label Content="руб./день"/>
-                                        </StackPanel>
-
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <Label Content="{Binding Mileage}"/>
-                                            <Label Content="км"/>
-                                        </StackPanel>
-                                    </DockPanel>
-                                </StackPanel>
+                                </Grid>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
