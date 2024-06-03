@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace CarRent.Pages
         public List<string> manufacturers { get; set; }
         public List<string> models { get; set; }
         public Cars car { get; set; }
+        private bool _new;
         public List<string> images { get; set; } = new List<string>()
         {
             "audi.jpg",
@@ -31,16 +33,19 @@ namespace CarRent.Pages
             "ford.jpg",
             "ford150.jpg"
         };
-        public AddEdit(Cars car)
+        public AddEdit(Cars car, bool _new = false)
         {
             manufacturers = AppData.Model.Manufacturers.Select(x => x.Name).ToList();
             models = AppData.Model.Models.Select(x => x.Name).ToList();
 
             this.car = car;
+            this._new = _new;
 
             DataContext = this;
             
             InitializeComponent();
+
+            delete.Visibility = _new ? Visibility.Collapsed : Visibility.Visible;
 
             mfs.SelectedItem = car.Models.Manufacturers.Name;
 
@@ -61,6 +66,10 @@ namespace CarRent.Pages
                 return;
             }
             car.Model = AppData.Model.Models.Where(x => x.Name == mdls.SelectedItem).Select(x => x.ID).FirstOrDefault();
+            if (_new)
+            {
+                AppData.Model.Cars.Add(car);
+            }
             AppData.Model.SaveChanges();
             AppData.MainFrame.Navigate(new View());
         }
@@ -93,10 +102,36 @@ namespace CarRent.Pages
             }
             AppData.MainFrame.GoBack();
         }
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            if (_new)
+            {
+                AppData.Model.Cars.Remove(car);
+                AppData.Model.SaveChanges();
+            }
+            AppData.Refresh();
+            AppData.MainFrame.Navigate(new View());
+        }
 
         private void ValidateCost(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = new Regex(@"^[0-9]{1,9}\.[0-9]{0,2}$").IsMatch(e.Text);
+            TextBox textBox = sender as TextBox;
+            string text = textBox.Text.Insert(textBox.CaretIndex, e.Text);
+            Console.WriteLine(new Regex(@"^[0-9]{1,9}\.[0-9]{0,2}$").IsMatch(text));
+            e.Handled = !new Regex(@"^[0-9]{1,9}\.[0-9]{0,2}$").IsMatch(text);
+        }
+
+        private void ValidateNumber(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = true;
+            TextBox textBox = sender as TextBox;
+            int index = textBox.CaretIndex;
+            if (textBox.Text.Insert(textBox.CaretIndex, e.Text).Trim().Length > 9)
+            {
+                return;
+            }
+            textBox.Text = textBox.Text.Insert(textBox.CaretIndex, e.Text).Trim();
+            textBox.CaretIndex = index + 1;
         }
     }
 }

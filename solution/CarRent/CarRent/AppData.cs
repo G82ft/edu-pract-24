@@ -28,19 +28,23 @@ namespace CarRent
 
         public static void onlyNumeric(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = _numeric.IsMatch(e.Text);
+            TextBox textBox = sender as TextBox;
+            e.Handled = _numeric.IsMatch(textBox.Text.Insert(textBox.CaretIndex, e.Text));
         }
         public static void onlyNumericPositive(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = _numericPositive.IsMatch(e.Text);
+            TextBox textBox = sender as TextBox;
+            e.Handled = _numericPositive.IsMatch(textBox.Text.Insert(textBox.CaretIndex, e.Text));
         }
         public static void onlyInt(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = _intPositive.IsMatch(e.Text);
+            TextBox textBox = sender as TextBox;
+            e.Handled = _intPositive.IsMatch(textBox.Text.Insert(textBox.CaretIndex, e.Text));
         }
         public static void onlyIntPositive(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = _intPositive.IsMatch(e.Text);
+            TextBox textBox = sender as TextBox;
+            e.Handled = _intPositive.IsMatch(textBox.Text.Insert(textBox.CaretIndex, e.Text));
         }
     }
 }

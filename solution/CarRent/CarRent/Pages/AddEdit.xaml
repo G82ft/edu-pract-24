@@ -13,10 +13,10 @@
             <StackPanel x:Name="panel" VerticalAlignment="Center">
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type TextBox}">
-                        <Setter Property="Width" Value="150"/>
+                        <Setter Property="Width" Value="200"/>
                     </Style>
                     <Style TargetType="{x:Type ComboBox}">
-                        <Setter Property="Width" Value="150"/>
+                        <Setter Property="Width" Value="200"/>
                     </Style>
                     <Style TargetType="{x:Type Label}">
                         <Setter Property="Width" Value="100"/>
@@ -36,7 +36,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Number"/>
-                    <TextBox x:Name="number" Text="{Binding car.Number}"/>
+                    <TextBox x:Name="number" Text="{Binding car.Number}" PreviewTextInput="ValidateNumber"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Cost"/>
@@ -47,7 +47,8 @@
                     <TextBox x:Name="mileage" Text="{Binding car.Mileage}"/>
                 </StackPanel>
                 <DockPanel>
-                    <Button Content="Удалить" Click="Delete" Width="100" Background="Red"/>
+                    <Button Content="Отмена" Click="Cancel" Width="100"/>
+                    <Button x:Name="delete" Content="Удалить" Click="Delete" Width="100" Background="Red"/>
                     <Button Content="Сохранить" Click="Save" Background="LightGreen"/>
                 </DockPanel>
             </StackPanel>

@@ -61,11 +61,6 @@ namespace CarRent.Pages
                 MessageBox.Show("Конечная дата должна быть после начальной.");
                 return;
             }
-
-            if (_newOrder)
-            {
-                AppData.Model.Orders.Add(orders);
-            }
             AppData.Model.SaveChanges();
             AppData.MainFrame.Navigate(new Orders());
         }
@@ -111,6 +106,7 @@ namespace CarRent.Pages
             }
             else
             {
+                AppData.Refresh();
                 AppData.MainFrame.Navigate(new Orders(_allUsers));
             }
         }
