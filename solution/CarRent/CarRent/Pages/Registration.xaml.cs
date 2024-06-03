@@ -30,7 +30,6 @@ namespace CarRent.Pages
                     Password = "",
                     Role = 1
                 };
-                back.Content = "Вход";
             }
             else
             {
@@ -111,6 +110,7 @@ namespace CarRent.Pages
                 AppData.MainFrame.Navigate(new Auth());
                 return;
             }
+            AppData.RollBack();
             AppData.MainFrame.Navigate(new EditUsers());
         }
     }

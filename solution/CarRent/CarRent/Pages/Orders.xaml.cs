@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
@@ -29,13 +30,22 @@ namespace CarRent.Pages
             InitializeComponent();
             if (!allUsers)
             {
-                listView.ItemsSource = AppData.CurrentUser.Orders.Where(x => x.User == AppData.CurrentUser.ID).ToList();
+                listView.ItemsSource = AppData.CurrentUser.Orders.ToList().Where(x => x.User == AppData.CurrentUser.ID);
             }
             else
             {
                 listView.ItemsSource = AppData.Model.Orders.ToList();
                 pdf.Visibility = Visibility.Collapsed;
             }
+            Console.WriteLine("---");
+            foreach (var item in AppData.CurrentUser.Orders)
+            {
+                Console.WriteLine(item.ID);
+                Console.WriteLine(item.User);
+            }
+            Console.WriteLine(AppData.Model.Orders.Any());
+            Console.WriteLine(AppData.CurrentUser.Orders.Where(x => x.User == AppData.CurrentUser.ID).Any());
+            Console.WriteLine("---");
         }
 
         private void OrderClick(object sender, MouseButtonEventArgs e)

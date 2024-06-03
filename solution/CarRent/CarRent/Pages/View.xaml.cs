@@ -137,10 +137,9 @@ namespace CarRent.Pages
             };
             AppData.Model.Cars.Add(car);
             AppData.Model.SaveChanges();
-            AppData.Refresh();
             AppData.MainFrame.Navigate(
                 new AddEdit(
-                    AppData.Model.Cars.OrderByDescending(x => x.ID).FirstOrDefault()));
+                    AppData.Model.Cars.OrderByDescending(x => x.ID).FirstOrDefault(), true));
         }
 
         private void EditUsers(object sender, RoutedEventArgs e)

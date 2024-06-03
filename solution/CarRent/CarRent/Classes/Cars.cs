@@ -15,7 +15,6 @@ namespace CarRent
             {
                 if (Image == null || !File.Exists($"..\\..\\Images\\{Image}"))
                 {
-                    Console.WriteLine(Directory.GetCurrentDirectory());
                     return $"..\\Images\\def.jpg";
                 }
                 return $"..\\Images\\{Image}";

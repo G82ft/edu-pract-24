@@ -27,7 +27,7 @@ namespace CarRent.Pages
             InitializeComponent();
 
             AppData.Model.Users.Load();
-            listView.ItemsSource = AppData.Model.Users.Local;
+            listView.ItemsSource = AppData.Model.Users.Local.Where(x => x.ID != AppData.CurrentUser.ID);
         }
 
         private void Save(object sender, RoutedEventArgs e)
@@ -45,10 +45,17 @@ namespace CarRent.Pages
             Button cb = sender as Button;
             int ID = int.Parse(((cb.Parent as DockPanel).Children[0] as TextBlock).Text);
             Users user = AppData.Model.Users.Where(x => x.ID == ID).FirstOrDefault();
-                AppData.Model.Users.Remove(user);
+            AppData.Model.Users.Remove(user);
+            try
+            {
                 AppData.Model.SaveChanges();
-                AppData.MainFrame.GoBack();
-                AppData.MainFrame.Navigate(new EditUsers());
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Невозможно удалить пользователя, так как у него есть закаы.");
+            }
+            AppData.MainFrame.GoBack();
+            AppData.MainFrame.Navigate(new EditUsers());
         }
 
         private void ToEdit(object sender, MouseButtonEventArgs e)
@@ -61,7 +68,7 @@ namespace CarRent.Pages
 
         private void Cancel(object sender, RoutedEventArgs e)
         {
-            AppData.Refresh();
+            AppData.RollBack();
             AppData.MainFrame.Navigate(new View());
         }
     }

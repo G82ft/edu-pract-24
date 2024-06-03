@@ -19,11 +19,28 @@ namespace CarRent
         private static readonly Regex _numericPositive = new Regex("[^0-9.]+");
         private static readonly Regex _int = new Regex("[^0-9-]+");
         private static readonly Regex _intPositive = new Regex("[^0-9]+");
-        public static void Refresh()
+        public static void RollBack()
         {
-            Model.ChangeTracker.Entries()
-            .Where(x => x.Entity != null).ToList()
-            .ForEach(x => x.State = EntityState.Detached);
+            var context = Model;
+            var changedEntries = context.ChangeTracker.Entries()
+                .Where(x => x.State != EntityState.Unchanged).ToList();
+
+            foreach (var entry in changedEntries)
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Modified:
+                        entry.CurrentValues.SetValues(entry.OriginalValues);
+                        entry.State = EntityState.Unchanged;
+                        break;
+                    case EntityState.Added:
+                        entry.State = EntityState.Detached;
+                        break;
+                    case EntityState.Deleted:
+                        entry.State = EntityState.Unchanged;
+                        break;
+                }
+            }
         }
 
         public static void onlyNumeric(object sender, TextCompositionEventArgs e)

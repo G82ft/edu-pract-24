@@ -38,9 +38,10 @@ namespace CarRent.Pages
             }
 
             delete.Visibility = _newOrder ? Visibility.Collapsed : Visibility.Visible;
-
+            
             orders = order;
             state.ItemsSource = AppData.Model.States.Select(x => x.Name).ToList();
+            Console.WriteLine(order.State);
             state.SelectedItem = AppData.Model.States.Where(x => x.ID == order.State).FirstOrDefault().Name;
             DataContext = orders;
         }
@@ -106,7 +107,7 @@ namespace CarRent.Pages
             }
             else
             {
-                AppData.Refresh();
+                AppData.RollBack();
                 AppData.MainFrame.Navigate(new Orders(_allUsers));
             }
         }

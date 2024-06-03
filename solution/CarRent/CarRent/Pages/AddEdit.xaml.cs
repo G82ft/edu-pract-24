@@ -104,12 +104,8 @@ namespace CarRent.Pages
         }
         private void Cancel(object sender, RoutedEventArgs e)
         {
-            if (_new)
-            {
-                AppData.Model.Cars.Remove(car);
-                AppData.Model.SaveChanges();
-            }
-            AppData.Refresh();
+            AppData.RollBack();
+            AppData.Model.SaveChanges();
             AppData.MainFrame.Navigate(new View());
         }
 
