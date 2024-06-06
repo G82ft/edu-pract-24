@@ -44,19 +44,15 @@ namespace CarRent.Pages
         }
         private void SignUp(object sender, RoutedEventArgs e)
         {
-            if (!Validate())
-            {
-                return;
-            }
+            if (!Validate()) return;
+
             if (AppData.CurrentUser != null)
             {
                 AppData.MainFrame.Navigate(new EditUsers());
                 return;
             }
 
-            AppData.Model.Users.Add(
-                _user
-            );
+            AppData.Model.Users.Add(_user);
             AppData.Model.SaveChanges();
             MessageBox.Show("Регистрация прошла успешно!");
             AppData.MainFrame.Navigate(new Auth());

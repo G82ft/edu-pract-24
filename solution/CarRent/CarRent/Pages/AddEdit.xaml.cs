@@ -113,7 +113,6 @@ namespace CarRent.Pages
         {
             TextBox textBox = sender as TextBox;
             string text = textBox.Text.Insert(textBox.CaretIndex, e.Text);
-            Console.WriteLine(new Regex(@"^[0-9]{1,9}\.[0-9]{0,2}$").IsMatch(text));
             e.Handled = !new Regex(@"^[0-9]{1,9}\.[0-9]{0,2}$").IsMatch(text);
         }
 

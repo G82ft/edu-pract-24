@@ -56,7 +56,7 @@ namespace CarRent
         public static void onlyInt(object sender, TextCompositionEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            e.Handled = _intPositive.IsMatch(textBox.Text.Insert(textBox.CaretIndex, e.Text));
+            e.Handled = _int.IsMatch(textBox.Text.Insert(textBox.CaretIndex, e.Text));
         }
         public static void onlyIntPositive(object sender, TextCompositionEventArgs e)
         {

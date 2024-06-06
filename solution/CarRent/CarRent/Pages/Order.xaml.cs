@@ -41,7 +41,6 @@ namespace CarRent.Pages
             
             orders = order;
             state.ItemsSource = AppData.Model.States.Select(x => x.Name).ToList();
-            Console.WriteLine(order.State);
             state.SelectedItem = AppData.Model.States.Where(x => x.ID == order.State).FirstOrDefault().Name;
             DataContext = orders;
         }
@@ -50,11 +49,9 @@ namespace CarRent.Pages
         {
             DateTime startDate;
             DateTime endDate;
-            if (!(CheckDateFormat(start.Text, out startDate) & CheckDateFormat(end.Text, out endDate)))
+            if (!(CheckDateFormat(start.Text, out startDate) && CheckDateFormat(end.Text, out endDate)))
             {
                 MessageBox.Show("Некорректный формат данных!");
-                Console.WriteLine(startDate);
-                Console.WriteLine(endDate);
                 return;
             }
             if (endDate <= startDate)
